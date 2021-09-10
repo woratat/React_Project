@@ -11,28 +11,28 @@ import FooterStyle from '../assets/scss/footer.module.scss';
 
 export default function Footer() {
     return (
-        <footer>
-            <div className="item-footer">
-                <LinkFooter title="help">
-                    <ItemNavFooter toLink="/" nameLink="" />
-                    <ItemNavFooter toLink="/" nameLink="" />
+        <footer className={FooterStyle.footer}>
+            <div className={FooterStyle['item-footer']}>
+                <LinkFooter title="Help">
+                    <ItemNavFooter toLink="/" nameLink="About" />
+                    <ItemNavFooter toLink="/" nameLink="What the Movie king" />
                 </LinkFooter>
                 <LinkFooter title="Critic Submission">
-                    <ItemNavFooter toLink="/" nameLink="" />
-                    <ItemNavFooter toLink="/" nameLink="" />
+                    <ItemNavFooter toLink="/" nameLink="Licensing" />
+                    <ItemNavFooter toLink="/" nameLink="Advertise" />
                 </LinkFooter>
-                <LinkFooter title="follow us">
-                    <ItemFollowFooter toLink="/" nameLink="" nameIcon="" />
-                    <ItemFollowFooter toLink="/" nameLink="" nameIcon="" />
-                    <ItemFollowFooter toLink="/" nameLink="" nameIcon="" />
+                <LinkFooter title="Follow us">
+                    <ItemFollowFooter toLink="/" nameLink="Facebook" nameIcon="bx bxl-facebook-circle" color="facebook-icon" />
+                    <ItemFollowFooter toLink="/" nameLink="Twitter" nameIcon="bx bxl-twitter" color="twitter-icon" />
+                    <ItemFollowFooter toLink="/" nameLink="Instagram" nameIcon="bx bxl-instagram" color="instagram-icon" />
                 </LinkFooter>
             </div>
-            <div className="copy-right">
+            <div className={FooterStyle['copy-right']}>
                 <div className="cr-left">
                     <small className="">Copyright © Fandango. All rights reserved.</small>
                 </div>
                 <div className="cr-right">
-                    <NavPolicy />   
+                    <NavPolicy />  
                 </div>
             </div>
         </footer>

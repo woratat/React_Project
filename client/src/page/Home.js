@@ -8,7 +8,7 @@ import Footer from '../component/Footer';
 export default function Home() {
     const [page] = useState({
         title: '',
-        body: ''
+        body: 'page-home'
     });
 
     useBody(page.body);

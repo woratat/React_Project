@@ -1,0 +1,91 @@
+$facebook: #3b5998;
+$twitter: #1DA1F2;
+$instagram: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-footer {
+    display: flex;
+    justify-content: space-around;
+    padding: 1.8rem 0;
+}
+
+.component-footer {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.8rem;
+}
+
+.title-footer-item {
+    font-size: 1.3rem;
+    color: rgba(48, 87, 225, 1);
+}
+
+.link-footer-item {
+    display: flex;
+    flex-direction: column;
+    row-gap: .8rem;
+}
+
+.link-footer {
+    color: rgba(0, 0, 0, .6);
+    font-size: 1rem;
+    transition: all 0.3s;
+
+    &:hover {
+        color: rgba(48, 87, 225, 1);
+    }
+}
+
+.footer-item-social {
+    display: flex;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.item-icon {
+    font-size: 1.23rem;
+    margin-top: .25rem;
+}
+
+.facebook-icon {
+    color: $facebook;
+}
+
+.twitter-icon {
+    color: $twitter;
+}
+
+.instagram-icon {
+    background: $instagram;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.copy-right {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0,0,0,.1);
+    padding: 1.6rem 2rem;
+}
+
+.list-privacy {
+    list-style: none;
+    display: flex;
+    column-gap: 1rem;
+}
+
+.btn-link-privacy {
+    color: rgba(0, 0, 0, .6);
+    font-size: 1rem;
+    transition: all 0.3;
+
+    &:hover {
+        color: #000;
+    }
+}
+
