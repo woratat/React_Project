@@ -28,7 +28,7 @@ export default function Footer() {
                 </LinkFooter>
             </div>
             <div className={FooterStyle['copy-right']}>
-                <div className="cr-left">
+                <div className={FooterStyle['cr-left']}>
                     <small className="">Copyright © Fandango. All rights reserved.</small>
                 </div>
                 <div className="cr-right">

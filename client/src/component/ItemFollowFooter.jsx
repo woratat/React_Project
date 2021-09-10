@@ -12,7 +12,7 @@ export default function ItemFollowFooter({ toLink, nameLink, nameIcon, color  })
                 <i className={nameIcon + " " + FooterStyle[color]}></i>
             </div>
             <div className="name-link">
-                <Link to={toLink} className="">
+                <Link to={toLink} className={FooterStyle['link-footer']}>
                     <span>{ nameLink }</span>
                 </Link>
             </div>

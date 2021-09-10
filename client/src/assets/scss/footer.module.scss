@@ -79,6 +79,11 @@ $instagram: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, 
     column-gap: 1rem;
 }
 
+.cr-left {
+    display: flex;
+    align-items: center;
+}
+
 .btn-link-privacy {
     color: rgba(0, 0, 0, .6);
     font-size: 1rem;
