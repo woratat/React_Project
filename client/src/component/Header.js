@@ -2,8 +2,6 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 function Header({ className }) {
   return (
@@ -13,7 +11,7 @@ function Header({ className }) {
       </div>
       <div className="search-box">
         <input type="text" placeholder="Search" className="search-text"></input>
-        <FontAwesomeIcon className="search-btn" icon={faSearch} />
+        <i class='bx bx-search'></i>
       </div>
       <div className="menu">
         <NavLink to="/">Movies</NavLink>
