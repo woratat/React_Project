@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import FooterStyle from '../assets/scss/footer.module.scss';
+
 export default function LinkFooter({ title, children }) {
     return (
-        <div className="component-footer">
-            <div className="title-footer-item">
+        <div className={FooterStyle['component-footer']}>
+            <div className={FooterStyle['title-footer-item']}>
                 <span>{ title }</span>
             </div>
-            <div className="link-footer-item">
+            <div className={FooterStyle['link-footer-item']}>
                 { children }
             </div>
         </div>
