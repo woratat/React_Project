@@ -4,6 +4,7 @@ import { useBody } from '../use'
 
 // component
 import Footer from '../component/Footer';
+import Header from '../component/Header';
 
 export default function Home() {
     const [page] = useState({
@@ -18,6 +19,7 @@ export default function Home() {
             <Helmet>
                 <title>{ page.title }</title>
             </Helmet>
+            <Header/>
             <Footer />
         </HelmetProvider>
     );
