@@ -6,8 +6,10 @@ import LinkFooter from './LinkFooter';
 import ItemNavFooter from './ItemNavFooter';
 import ItemFollowFooter from './ItemFollowFooter';
 
-export default function Footer() {
+// scss module
+import FooterStyle from '../assets/scss/footer.module.scss';
 
+export default function Footer() {
     return (
         <footer>
             <div className="item-footer">

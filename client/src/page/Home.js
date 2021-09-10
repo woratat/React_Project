@@ -20,5 +20,5 @@ export default function Home() {
             </Helmet>
             <Footer />
         </HelmetProvider>
-    )
+    );
 }
