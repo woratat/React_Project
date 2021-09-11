@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
@@ -7,6 +7,22 @@ import PropTypes from "prop-types";
 import NavLinkItem from './HeaderNavLinkItem';
 
 function Header({ className }) {
+  const [inputs, setInputs] = useState('');
+  
+  const handleChange = (e) => {
+    setInputs(e.target.value);
+  }
+
+  const onEnter = (e) => {
+    if (e.code === 'Enter') {
+      
+    }
+  }
+
+  const handleClick = () => {
+    
+  }
+
   return (
     <header className={className}>
       <div className="content-logo">
@@ -14,14 +30,14 @@ function Header({ className }) {
           <span className="title-logo">Movie King</span>
         </Link>
       </div>
-      <div className="menu">
+      <ul className="menu">
         <NavLinkItem toLink="/" title="Movies" />
         <NavLinkItem toLink="/tv" title="TV Shows" />
         <NavLinkItem toLink="/new" title="New" />
-      </div>
+      </ul>
       <div className="search-box">
-        <input type="text" placeholder="Search" className="search-text"></input>
-        <i className='bx bx-search icon-search'></i>
+        <input type="text" placeholder="Search" className="search-text" onChange={handleChange} onKeyDown={onEnter} value={inputs}></input>
+        <i className={inputs.length < 10 ? 'bx bx-search icon-search' : ''} onClick={handleClick}></i>
       </div>
     </header>
   );
@@ -35,7 +51,7 @@ export default styled(Header)`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 1.8rem;
+  padding: 1rem;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 6%);
   background-color: #fff;
   position: fixed;
@@ -62,6 +78,28 @@ export default styled(Header)`
     position: relative;
   }
 
+  .link-item-header:hover::before {
+    content: "";
+    position: absolute;
+    display: block;
+    bottom: -0.4rem;
+    height: 0.222rem;
+    width: 100%;
+    background: rgba(48, 87, 225, 1);
+    box-shadow: 0 0 3px .5px rgba(48, 87, 225, .6);
+    border-radius: 50px;
+    animation: bar 0.2s;
+  }
+
+  @keyframes bar {
+    0% {
+      width: 0
+    }
+    100% {
+      width: 100%
+    }
+  }
+
   .active-item-header {
     color:  rgba(48, 87, 225, 1);
   }
@@ -69,6 +107,7 @@ export default styled(Header)`
   .active-item-header::before {
     content: "";
     position: absolute;
+    display: block;
     bottom: -0.4rem;
     width: 100%;
     height: 0.222rem;
@@ -96,8 +135,8 @@ export default styled(Header)`
   }
 
   .search-text:focus {
-    border-color: rgba(48, 87, 225, .5);
-    box-shadow: 0 0 2px .5px rgba(48, 87, 225, .6);
+    border-color: rgba(48, 87, 225, 1);
+    box-shadow: 0 0 4px .5px rgba(48, 87, 225, 1);
   }
 
   .icon-search {
