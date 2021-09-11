@@ -3,8 +3,9 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useBody } from '../use'
 
 // component
-import Footer from '../component/Footer';
 import Header from '../component/Header';
+import Main from '../component/MainHome';
+import Footer from '../component/Footer';
 
 export default function Home() {
     const [page] = useState({
@@ -20,47 +21,11 @@ export default function Home() {
                 <title>{ page.title }</title>
             </Helmet>
             <Header/>
-            <div>
+            <Main>
                 <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
+                    
                 </div>
-                <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
-                </div>
-                <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
-                </div>
-                <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
-                </div>
-                <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
-                </div>
-                <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
-                </div>
-                <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
-                </div>
-                <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
-                </div>
-                <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
-                </div>
-                <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
-                </div>
-                <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
-                </div>
-                <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
-                </div>
-                <div>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus ipsam labore, ut beatae autem aliquam nihil exercitationem dolor nobis id, delectus accusamus dolores architecto dicta facere porro, aliquid modi totam?
-                </div>
-            </div>
+            </Main>
             <Footer />
         </HelmetProvider>
     );

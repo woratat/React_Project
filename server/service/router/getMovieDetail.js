@@ -6,9 +6,13 @@ const connect = require('../../config/database');
 
 const route = express.Router();
 const corsOption = {
-
+    origin: 'http://localhost:3000',
+    methods: ['GET'],
+    allowedHeaders: ['Content-Type'],
+    optionsSuccessStatus: 200 
 }
 
+route.use(cors(corsOption));
 route.get('/:id', (req, res) => {
     const token = req.params.id;
 
