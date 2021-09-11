@@ -3,6 +3,10 @@ const express = require('express');
 // config app
 const app = express();
 
+// route
+const getMovieList = require('../service/router/getMovieList');
+const getMovieDetail = require('../service/router/getMovieDetail');
+
 module.exports = () => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
@@ -24,6 +28,9 @@ module.exports = () => {
             console.log(`server running on port ${port}`);
         });
     }
+
+    app.use('/api/get/movieList', getMovieList);
+    app.use('/api/get/movieDetail', getMovieDetail);
 
     return { listen };
 }
