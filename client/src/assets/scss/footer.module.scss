@@ -99,9 +99,19 @@ $instagram: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, 
     color: rgba(0, 0, 0, .6);
     font-size: 1rem;
     transition: all 0.3;
+    position: relative;
 
     &:hover {
         color: #000;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: .5px;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .6);
+        transform: translateX(-.5rem);
     }
 }
 
