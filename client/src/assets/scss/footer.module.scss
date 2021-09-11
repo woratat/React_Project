@@ -20,7 +20,15 @@ $instagram: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, 
 .component-footer {
     display: flex;
     flex-direction: column;
-    row-gap: 1.8rem;
+    row-gap: 1.2rem;
+}
+
+.component-footer:nth-child(1) {
+    width: 20%;
+}
+
+.color-content {
+    color: rgba(0, 0, 0, .6);
 }
 
 .title-footer-item {

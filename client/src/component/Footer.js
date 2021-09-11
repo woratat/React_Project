@@ -1,6 +1,7 @@
 import React from 'react';
 
 // component
+import LogoFooter from './LogoFooter';
 import NavPolicy from './NavPolicy';
 import LinkFooter from './LinkFooter';
 import ItemNavFooter from './ItemNavFooter';
@@ -13,6 +14,7 @@ export default function Footer() {
     return (
         <footer className={FooterStyle.footer}>
             <div className={FooterStyle['item-footer']}>
+                <LogoFooter />
                 <LinkFooter title="Help">
                     <ItemNavFooter toLink="/" nameLink="About" />
                     <ItemNavFooter toLink="/" nameLink="What the Movie king" />
