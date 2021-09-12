@@ -16,6 +16,7 @@ function Carousel({ className }) {
                 timeout: 2000,
             });
 
+            console.log(res.data);
             setImages(res.data);
         } catch (error) {
             if (error.response) {

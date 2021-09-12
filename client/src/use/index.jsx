@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const addBodyClass = (className) => {
     document.body.classList.add(className);
@@ -16,8 +16,17 @@ const useBody = (className) => {
             className instanceof Array ? className.map(removeBodyClass) : removeBodyClass(className);
         }
     }, [className]);
-
-    
 }
 
-export { useBody };
+const useImage = (imageName) => {
+    const [image, setImage] = useState('');
+
+    useEffect(() => {
+        const imageLink = require(`../assets/images/${imageName}`).default;
+        setImage(imageLink);
+    }, [imageName]);
+
+    return [image];
+}
+
+export { useBody, useImage };

@@ -24,12 +24,15 @@ MainHome.propTypes = {
 }
 
 export default styled(MainHome)`
+    max-width: 1420px;
+    margin: 0 auto;
     margin-top: 8rem;
 
     .content-carousel {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 3rem;
     }
 `;
 
