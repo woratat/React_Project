@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Home} sensitive strict />
+        <Route exact path="/" component={Home} sensitive strict  />
       </Switch>
     </Router>
   );
