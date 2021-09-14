@@ -31,7 +31,7 @@ function Header({ className }) {
         </Link>
       </div>
       <ul className="menu">
-        <NavLinkItem toLink="/" title="Movies" />
+        <NavLinkItem toLink="/" title="Movies"/>
         <NavLinkItem toLink="/tv" title="TV Shows" />
         <NavLinkItem toLink="/new" title="New" />
       </ul>
@@ -83,12 +83,12 @@ export default styled(Header)`
     position: absolute;
     display: block;
     bottom: -0.4rem;
-    height: 0.222rem;
+    height: 0.122rem;
     width: 100%;
     background: rgba(48, 87, 225, 1);
     box-shadow: 0 0 3px .5px rgba(48, 87, 225, .6);
     border-radius: 50px;
-    animation: bar 0.2s;
+    animation: bar 0.3s ease-in;
   }
 
   @keyframes bar {
@@ -110,7 +110,7 @@ export default styled(Header)`
     display: block;
     bottom: -0.4rem;
     width: 100%;
-    height: 0.222rem;
+    height: 0.122rem;
     background: rgba(48, 87, 225, 1);
     box-shadow: 0 0 3px .5px rgba(48, 87, 225, .6);
     border-radius: 50px;
