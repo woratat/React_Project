@@ -29,11 +29,7 @@ export default function ListMovie({ movieName }) {
     
     return (
         <>
-            { movie.map((value) => {
-                return (
-                    <CardMovie key={value.movie_id} item={value} />
-                );
-            }) }
+            
         </>
     );
 }

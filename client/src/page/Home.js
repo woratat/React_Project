@@ -12,7 +12,7 @@ import Footer from '../component/Footer';
 
 function Home({ className }) {
     const [page] = useState({
-        title: '',
+        title: 'Movie King',
         body: 'page-home'
     });
 

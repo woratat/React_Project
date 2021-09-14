@@ -27,7 +27,7 @@ function Header({ className }) {
     <header className={className}>
       <div className="content-logo">
         <Link to="/">
-          <span className="title-logo">Movie King</span>
+          <span className="title-logo">Movie<span className="title-king">King</span></span>
         </Link>
       </div>
       <ul className="menu">
@@ -61,9 +61,16 @@ export default styled(Header)`
   z-index: 10;
 
   .title-logo {
-    font-size: 1.3rem;
+    font-size: 1.8rem;
     color: rgba(48, 87, 225, 1);
-    letter-spacing: .2rem
+    letter-spacing: .2rem;
+  }
+
+  .title-king {
+    background-color: rgba(48, 87, 225, 1);
+    padding: 7px;
+    color: white;
+    border-radius: 6px;
   }
 
   .menu {
