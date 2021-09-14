@@ -9,7 +9,12 @@ function MainHome({ className, children }) {
     return (
         <main className={className}>
             <section className="content-carousel">
-                <Carousel />
+                <div>
+                    <h1>Movie New</h1>
+                </div>
+                <div>
+                    <Carousel />
+                </div>
             </section>
             <section className="content-list-movie">
                 { children }
@@ -32,6 +37,7 @@ export default styled(MainHome)`
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         margin-bottom: 3rem;
     }
 `;
