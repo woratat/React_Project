@@ -11,24 +11,36 @@ import {useParams, Redirect} from 'react-router-dom';
 import Header from '../component/Header';
 import Main from '../component/MainDetail';
 import Footer from '../component/Footer';
+import ShowTrailer from '../component/ShowTrailer';
 
 function Detail({ className }){
     const [page] = useState({
         title: '',
         body: 'page-detail'
     });
+
+    const [movies, setMovies] = useState('');
     const {token} = useParams();
     
     useBody(page.body);
 
     useEffect(() => {
-        getMovie(token);
+        const getMovie = async () =>{
+            try {
+                const movie = await axios.get(`http://localhost:5050/api/get/movieDetail/${token}`, {
+                    timeout:2000
+                })
+                setMovies(movie.data[0])
+            } catch (error) {
+                if(error.response){
+                    console.log(error.response);
+                }
+            }        
+        }
+        getMovie();
     }, [token]);
 
-    const getMovie = async (token) =>{
-        const movie = await axios.get(`http://localhost:5050/api/get/movieDetail/${token}`)
-        console.log(movie.data);
-    }
+    
 
     if(!validator.isJWT(token)){
         return <Redirect to="/" />
@@ -47,7 +59,8 @@ function Detail({ className }){
                     </div>
                 </div>
                 <div className="content-detail">
-
+                    <h1>{movies.movie_name}</h1>
+                    <ShowTrailer movieLink={movies.movie_link} />
                 </div>
             </Main>
             <Footer />
