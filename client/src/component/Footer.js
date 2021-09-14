@@ -31,7 +31,7 @@ export default function Footer() {
             </div>
             <div className={FooterStyle['copy-right']}>
                 <div className={FooterStyle['cr-left']}>
-                    <small className="">Copyright © Fandango. All rights reserved.</small>
+                    <small className="">Copyright © DII CAMT. All rights reserved.</small>
                 </div>
                 <div className="cr-right">
                     <NavPolicy />  
