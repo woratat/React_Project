@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
-export default function ShowTrailer({ movieLink }) {
+function ShowTrailer({ movieLink }) {
   return (
     <div>
       <iframe
@@ -20,3 +21,7 @@ export default function ShowTrailer({ movieLink }) {
 ShowTrailer.prototype = {
   movieLink: PropTypes.string.isRequired,
 };
+
+export default styled(ShowTrailer)`
+
+`;

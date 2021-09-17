@@ -80,7 +80,10 @@ const setToken = (data) => {
                     movie_image: value.movie_image,
                     movie_detail: value.movie_detail,
                     movie_like: value.movie_like,
-                    movie_link: value.movie_link
+                    movie_link: value.movie_link,
+                    movie_director: value.movie_director,
+                    movie_writer: value.movie_writer,
+                    movie_star: value.movie_star
                 }
             });
 

@@ -54,10 +54,12 @@ AddComment.propTypes = {
 };
 
 export default styled(AddComment)`
+box-sizing: border-box;
+
 .input-group textarea{
     width: 98%;
     height: 60px;
-    padding: 15px;
+    padding: 13px;
     border-radius: 5px;
     outline: none;
     resize: none;
