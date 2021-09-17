@@ -13,7 +13,7 @@ const corsOption = {
 }
 
 route.use(cors(corsOption));
-route.post('/:token', (req, res) => {
+route.post('/:token', async (req, res) => {
     const token = req.params.token;
 
     if (!token) {

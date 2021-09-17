@@ -5,9 +5,9 @@ const connect = require('../database');
 
 
 module.exports = () => {
-    passport.use(new BasicStrategy((username, password, done) => {
+    passport.use(new BasicStrategy(async (username, password, done) => {
         try {
-            const sql_check = "SELECT password FROM accounts WHERE username = ?";
+            const sql_check = "SELECT password FROM account WHERE username = ?";
             const [check] = await connect.execute(connect.format(sql_check, [username]));
 
             if (check.length === 0 || check.length >= 2) {
@@ -22,8 +22,16 @@ module.exports = () => {
                         message: 'Invalid username or password'
                     });
                 } else {
-                    const sql_user = "SELECT account_id AS id, username FROM accounts WHERE username = ?";
+                    const sql_user = "SELECT account_id AS id, username FROM account WHERE username = ?";
                     const [user] = await connect.execute(connect.format(sql_user, [username]));
+
+                    if (user) {
+                        return done(null, {
+                            error: false,
+                            id: user[0].id,
+                            username: user[0].username
+                        });
+                    }
                 }
             }
         } catch (error) {
