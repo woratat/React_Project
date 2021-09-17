@@ -7,6 +7,8 @@ const app = express();
 const getMovieList = require('../service/router/getMovieList');
 const getMovieDetail = require('../service/router/getMovieDetail');
 const getCarousel = require('../service/router/getCarousel');
+const getFavorite = require('../service/router/getMovieFavorite');
+const postFavorite = require('../service/router/postMovieFavorite');
 
 module.exports = () => {
     app.use(express.json());
@@ -33,6 +35,8 @@ module.exports = () => {
     app.use('/api/get/movieList', getMovieList);
     app.use('/api/get/movieDetail', getMovieDetail);
     app.use('/api/get/carousel', getCarousel);
+    app.use('/api/get/favorite', getFavorite);
+    app.use('/api/post/favorite', postFavorite);
 
     return { listen };
 }
