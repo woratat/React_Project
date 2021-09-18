@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // page component
 import Home from './page/Home';
+import Login from './page/Login';
 import Detail from './page/Detail';
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
     <Router>
       <Switch>
         <Route path="/detail/:token" component={Detail} />
-        <Route path="/" component={Home} sensitive strict />
+        <Route path="/login" component={Login} />
+        <Route path="/" component={Home} />
       </Switch>
     </Router>
   );
