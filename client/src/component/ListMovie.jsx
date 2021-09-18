@@ -6,6 +6,7 @@ import CardMovie from './CardMovie';
 
 export default function ListMovie({ movieName }) {
     const [movie, setMovie] = useState([]);
+
     useEffect(() => {
         getMovieList(movieName);
     }, [movieName]);
@@ -20,6 +21,7 @@ export default function ListMovie({ movieName }) {
             });
 
             setMovie(res.data);
+            console.log(movie);
         } catch (error) {
             if (error.response) {
                 console.error(error.response.message);
@@ -29,7 +31,7 @@ export default function ListMovie({ movieName }) {
     
     return (
         <>
-            
+
         </>
     );
 }

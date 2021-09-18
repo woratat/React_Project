@@ -17,7 +17,6 @@ function Favorite() {
                 <title>Movie King | My Favorite</title>
             </Helmet>
             <Header />
-            
             <Footer />
         </HelmetProvider>
     );

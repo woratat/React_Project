@@ -57,7 +57,7 @@ export default styled(AddComment)`
 box-sizing: border-box;
 
 .input-group textarea{
-    width: 98%;
+    width: 100%;
     height: 60px;
     padding: 13px;
     border-radius: 5px;

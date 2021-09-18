@@ -6,6 +6,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import axios from "axios";
 import validator from "validator";
 import { useParams, Redirect } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 // component
 import Header from "../component/Header";
@@ -61,7 +62,7 @@ function Detail({ className }) {
           </div>
           <div className="content">
             <div className="content-trailer">
-            <img src={movies.movie_image} alt="poster" />
+              <img src={movies.movie_image} alt="poster" />
               <ShowTrailer movieLink={movies.movie_link} />
             </div>
             <div className="content-detail">
@@ -106,7 +107,12 @@ export default styled(Detail)`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     row-gap: 16px;
+    img {
+      width: 100%;
+      margin-top: 20px;
+    }
   }
   .content-detail {
     padding: 10px 16px 10px 10px;
