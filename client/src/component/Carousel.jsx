@@ -7,39 +7,34 @@ function Carousel({ className }) {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
+        const getImage = async () => {
+            try {
+                const res = await axios.get('http://localhost:5050/api/get/carousel', {
+                    timeout: 2000,
+                });
+                setImages(res.data);
+            } catch (error) {
+                if (error.response) {
+                    console.error(error.response.message);
+                }
+            }
+        }
+
         getImage();
     }, []);
 
-    const getImage = async () => {
-        try {
-            const res = await axios.get('http://localhost:5050/api/get/carousel', {
-                timeout: 2000,
-            });
+    // const running = () => {
+    //     let count = 1;
 
-            console.log(res.data);
-            setImages(res.data);
-        } catch (error) {
-            if (error.response) {
-                console.error(error.response.message);
-            }
-        }
-    }
-
-    useEffect(() => {
-        running();
-    }, []);
-
-    const running = () => {
-        let count = 1;
-
-        setInterval(() => {
-            document.getElementById('carousel' + count).checked = true;
-            count++;
-            if (count > 4) {
-                count = 1;
-            }
-        }, 7000);
-    }
+    //     setInterval(() => {
+    //         document.getElementById('carousel' + count).checked = true;
+    //         count++;
+    //         if (count > 4) {
+    //             count = 1;
+    //         }
+    //     }, 7000);
+    // }
+    // running();
 
     return (
         <div className={className}>

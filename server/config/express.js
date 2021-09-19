@@ -1,11 +1,13 @@
 const express = require('express');
 const passport = require('../config/passport');
+const flash = require('connect-flash');
 
 // config app
 const app = express();
 
 // route
 const getUser = require('../service/auth/login');
+const checkUser = require('../service/auth/user');
 const getMovieList = require('../service/router/getMovieList');
 const getMovieDetail = require('../service/router/getMovieDetail');
 const getCarousel = require('../service/router/getCarousel');
@@ -20,6 +22,7 @@ module.exports = () => {
     passport();
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
+    app.use(flash());
 
     app.get('/', (req, res) => {
         return res.status(200).json({
@@ -40,6 +43,7 @@ module.exports = () => {
     }
 
     app.use('/api/auth/user', getUser);
+    app.use('/api/auth/check', checkUser);
     app.use('/api/get/movieList', getMovieList);
     app.use('/api/get/movieDetail', getMovieDetail);
     app.use('/api/get/carousel', getCarousel);

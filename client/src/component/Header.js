@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteUser } from '../actions/userAction';
 
 // component
 import NavLinkItem from './HeaderNavLinkItem';
 
 function Header({ className }) {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [inputs, setInputs] = useState('');
+  const history = useHistory();
   
   const handleChange = (e) => {
     setInputs(e.target.value);
@@ -23,6 +28,13 @@ function Header({ className }) {
     
   }
 
+  const handleLogout = (e) => {
+    e.preventDefault();
+    dispatch(deleteUser());
+    localStorage.removeItem('token');
+    history.push('/');
+  }
+
   return (
     <header className={className}>
       <div className="content-logo">
@@ -34,10 +46,29 @@ function Header({ className }) {
         <NavLinkItem toLink="/" title="Movies"/>
         <NavLinkItem toLink="/tv" title="TV Shows" />
         <NavLinkItem toLink="/new" title="New" />
+        { user.length === 1 ? <NavLinkItem toLink="/favorite" title="Favorite" /> : <></> }
       </ul>
       <div className="search-box">
         <input type="text" placeholder="Search" className="search-text" onChange={handleChange} onKeyDown={onEnter} value={inputs}></input>
         <i className={inputs.length < 10 ? 'bx bx-search icon-search' : ''} onClick={handleClick}></i>
+      </div>
+      <div className="controller-user">
+        { user.length === 1 ? 
+          <>
+            <div>
+              <Link to="/" onClick={handleLogout} className="btn-link">Sign out</Link>
+            </div>
+          </>
+        :
+          <>
+            <div className="login-controller">
+              <Link to="login" className="btn-link">Sign in</Link>
+            </div>
+            <div className="logout-controller">
+              <Link to="register" className="btn-link">Sign Up</Link>
+            </div>
+          </>
+        }
       </div>
     </header>
   );
@@ -155,6 +186,26 @@ export default styled(Header)`
   }
 
   .icon-search:hover {
+    color: rgba(48, 87, 225, 1);
+  }
+
+  .controller-user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 1rem;
+  }
+
+  .login-controller {
+    border-right: 1px solid rgba(0, 0, 0, .3);
+    padding-right: 1rem;
+  }
+
+  .btn-link {
+    transition: all 0.3s ease-in;
+  }
+
+  .btn-link:hover {
     color: rgba(48, 87, 225, 1);
   }
 `;
