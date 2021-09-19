@@ -3,6 +3,7 @@ import axios from "axios";
 
 // component
 import Row from "../component/Row";
+
 export default function ListMovie({ movieName }) {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
@@ -29,9 +30,6 @@ export default function ListMovie({ movieName }) {
   return (
     <>
       <Row title="Trending" data={movies}></Row>
-      <Row title="New movie" data={movies}></Row>
-      <Row title="Horror Movie" data={movies}></Row>
-      <Row title="Comedy" data={movies}></Row>
     </>
   );
 }
