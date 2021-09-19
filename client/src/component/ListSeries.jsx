@@ -4,7 +4,7 @@ import axios from "axios";
 // component
 import Row from "../component/Row";
 
-export default function ListMovie({ movieName }) {
+export default function ListSeries({ movieName }) {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     getMovieList(movieName);
@@ -12,7 +12,7 @@ export default function ListMovie({ movieName }) {
 
   const getMovieList = async (movieName) => {
     try {
-      const res = await axios.get("http://localhost:5050/api/get/movieList", {
+      const res = await axios.get("http://localhost:5050/api/get/tvShow", {
         params: {
           w: movieName,
         },
