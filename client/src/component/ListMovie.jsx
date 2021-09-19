@@ -28,9 +28,9 @@ export default function ListMovie({ movieName }) {
 
   return (
     <>
-      <Row title="Trending" data={movies}></Row>
-      <Row title="New movie" data={movies}></Row>
-      <Row title="Horror Movie" data={movies}></Row>
+      <Row title="Trending Now" data={movies}></Row>
+      <Row title="New Movies" data={movies}></Row>
+      <Row title="Horror Movies" data={movies}></Row>
     </>
   );
 }

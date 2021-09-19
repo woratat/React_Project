@@ -13,6 +13,8 @@ const getFavorite = require('../service/router/getMovieFavorite');
 const postFavorite = require('../service/router/postMovieFavorite');
 const postComment = require('../service/router/postComment');
 const updateComment = require('../service/router/updateComment');
+const getTvShow = require('../service/router/getTvShow');
+
 
 module.exports = () => {
     passport();
@@ -45,6 +47,7 @@ module.exports = () => {
     app.use('/api/post/favorite', postFavorite);
     app.use('/api/post/comment', postComment);
     app.use('/api/update/comment', updateComment);
+    app.use('/api/get/tvShow', getTvShow);
 
     return { listen };
 }
