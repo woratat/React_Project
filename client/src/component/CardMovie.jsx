@@ -1,29 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { useImage } from '../use'
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import { useImage } from "../use";
+import styles from "../assets/scss/row.module.scss";
+import { Link } from "react-router-dom";
 
 function CardMovie({ className, item }) {
-    const [imageLink] = useImage(item.movie_image);
-
-    return (
-        <div className={className}>
-            <img src={imageLink} alt="movie" />
-
-            <div className="content-card">
-                <div className="button-control">
-                    
-                </div>
-            </div>
-        </div>
-    );
+  const [movie, setMovie] = useState(item);
+  console.log("movie :>> ", movie);
+  return (
+    <Link to="/">
+      <img
+        className={styles.row_poster}
+        src={movie.movie_image}
+        alt={movie.movie_name}
+      />
+    </Link>
+  );
 }
 
 CardMovie.propTypes = {
-    className: PropTypes.string.isRequired,
-    item: PropTypes.object.isRequired
-}
+  className: PropTypes.string.isRequired,
+  item: PropTypes.object.isRequired,
+};
 
-export default styled(CardMovie)`
-
-`;
+export default styled(CardMovie)``;
