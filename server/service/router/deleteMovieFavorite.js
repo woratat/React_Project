@@ -1,13 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
-const validator = require('validator');
 const connect = require('../../config/database');
 
 
 const route = express.Router();
 const corsOption = {
-
+    origin: 'http://localhost:3000',
+    methods: ['DELETE'],
+    allowedHeaders: ['Content-Type'],
+    optionsSuccessStatus: 200
 }
 
 route.use(cors(corsOption));
@@ -32,12 +34,13 @@ route.delete('/', async (req, res) => {
 
                 if (result) {
                     return res.status(200).json({
-                        message: 'Remove movie successfully'
+                        message: 'Remove movie successfully',
+                        favorite_id: decode.favorite_id
                     });
                 }
             }
         } catch (error) {
-            new Error(error);
+            console.log(error);
         }
     }
 });

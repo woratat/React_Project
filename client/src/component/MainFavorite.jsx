@@ -1,30 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchMovieFavorite } from '../actions/MovieFavoriteAction';
 
 // component
-import CardMovie from './CardMovie';
+import CardMovieFavorite from './CardMovieFavorite';
 
-function MainFavorite({ className }) {
-    const [movies, setMovie] = useState([]);
+function MainFavorite({ className, user }) {
+    const movies = useSelector((state) => state.movie_favorite);
+    const dispatch = useDispatch();
+
     useEffect(() => {
-        getMovieFavorite();
-    });
-
-    const getMovieFavorite = async () => {
-        try {
-            const res = await axios.get('http://localhost:5050/api/get/favorite', {
-                timeout: 2000
-            });
-
-            setMovie(res.data);
-        } catch (error) {
-            if (error.response) {
-                console.log(error.response);
+        const getMovieFavorite = async () => {
+            try {
+                const res = await axios.get('http://localhost:5050/api/get/favorite', {
+                    timeout: 2000,
+                    params: {
+                        token: user
+                    }
+                });
+    
+                dispatch(fetchMovieFavorite(res.data));
+            } catch (error) {
+                if (error.response) {
+                    console.log(error.response);
+                }
             }
         }
-    }
+
+        getMovieFavorite();
+    }, [user, dispatch]);
 
     return (
         <main className={className}>
@@ -34,11 +41,13 @@ function MainFavorite({ className }) {
                        <h1>Movie not fount</h1> 
                     </div>
                 :
-                    movies.map((item) => {
-                        return (
-                            <CardMovie key={item.id} item={item} />
-                        );
-                    })
+                    <div className="show-item">
+                        { movies.map((item) => {
+                            return (
+                                <CardMovieFavorite key={item.favorite_id} item={item} />
+                            );
+                        }) }
+                    </div>
                 }
             </div>
         </main>
@@ -50,5 +59,17 @@ MainFavorite.propTypes = {
 }
 
 export default styled(MainFavorite)`
+    margin: 7.5rem 2rem 0 2rem;
 
+    .show-content-favorite {
+        display: flex;
+        justify-content: center;
+    }
+
+    .show-item {
+        display: grid;
+        grid-template-columns: repeat(4, .5fr);
+        column-gap: 3rem;
+        row-gap: 1.5rem;
+    }
 `;

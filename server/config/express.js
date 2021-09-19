@@ -13,6 +13,7 @@ const getMovieDetail = require('../service/router/getMovieDetail');
 const getCarousel = require('../service/router/getCarousel');
 const getFavorite = require('../service/router/getMovieFavorite');
 const postFavorite = require('../service/router/postMovieFavorite');
+const deleteFavorite = require('../service/router/deleteMovieFavorite');
 const postComment = require('../service/router/postComment');
 const updateComment = require('../service/router/updateComment');
 const getTvShow = require('../service/router/getTvShow');
@@ -52,6 +53,7 @@ module.exports = () => {
     app.use('/api/post/comment', postComment);
     app.use('/api/update/comment', updateComment);
     app.use('/api/get/tvShow', getTvShow);
+    app.use('/api/delete/favorite', deleteFavorite);
 
     return { listen };
 }

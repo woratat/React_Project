@@ -37,7 +37,7 @@ route.get('/', (req, res) => {
                 });
             } else {
                 try {
-                    const sql = "SELECT favorite.favorite_id AS favorite_id, movie.movie_image AS movie_image FROM favorite INNER JOIN movie ON favorite.movie_id = movie.movie_id WHERE account_id = ? ORDER BY favorite_id DESC";
+                    const sql = "SELECT favorite.favorite_id AS favorite_id, movie.movie_image AS movie_image, movie.movie_name AS movie_name, favorite.movie_id AS movie_id FROM favorite INNER JOIN movie ON favorite.movie_id = movie.movie_id WHERE account_id = ? ORDER BY favorite_id DESC";
                     const [rows] = await connect.execute(sql, [id]);
 
                     if (rows) {
@@ -58,7 +58,9 @@ const setToken = (data) => {
             const newData = data.map((value) => {
                 return {
                     favorite_id: jwt.sign({ favorite_id: value.favorite_id }, 'id_key_favorite', { algorithm: 'HS512' }),
-                    movie_image: value.movie_image
+                    movie_id: jwt.sign({ movie_id: value.movie_id }, 'id_key_movie', { algorithm: 'HS512' }),
+                    movie_image: value.movie_image,
+                    movie_name: value.movie_name
                 }
             });
 

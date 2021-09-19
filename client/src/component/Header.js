@@ -4,6 +4,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteUser } from '../actions/userAction';
+import swal from 'sweetalert2';
 
 // component
 import NavLinkItem from './HeaderNavLinkItem';
@@ -30,9 +31,20 @@ function Header({ className }) {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    dispatch(deleteUser());
-    localStorage.removeItem('token');
-    history.push('/');
+    swal.fire({
+      title: 'Sign out',
+      text: 'Do you want sign out?',
+      icon: 'question',
+      showCancelButton: true,
+      cancelButtonColor: '#f25',
+      confirmButtonText: 'Sign out'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(deleteUser());
+        localStorage.removeItem('token');
+        history.push('/');
+      }
+    });
   }
 
   return (

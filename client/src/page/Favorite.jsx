@@ -1,7 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import axios from 'axios';
+import React, { useEffect } from 'react';
 import { useBody } from '../use';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Redirect } from 'react-router-dom';
@@ -11,13 +8,13 @@ import { getUser } from '../auth/user.auth';
 
 // component
 import Header from '../component/Header';
+import Main from '../component/MainFavorite';
 import Footer from '../component/Footer';
 
 
-function Favorite() {
+export default function Favorite() {
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
-    const [favorite, setFavorite] = useState([]);
     useBody('favorite-page');
 
     useEffect(() => {
@@ -31,27 +28,6 @@ function Favorite() {
         fetch();
     }, [dispatch]);
 
-    useEffect(() => {
-        const getMovieFavorite = async () => {
-            try {
-                const res = await axios.get('http://localhost:5050/api/get/favorite', {
-                    timeout: 2000,
-                    params: {
-                        token: user[0].user
-                    }
-                });
-
-                if (res.status === 200) {
-                    setFavorite(res.data);
-                }
-            } catch (error) {
-                console.log(error.response);
-            }
-        }
-
-        getMovieFavorite();
-    }, [user]);
-
     if (user.length === 0) {
         return (
             <Redirect to="/"/>
@@ -64,18 +40,8 @@ function Favorite() {
                 <title>Movie King | My Favorite</title>
             </Helmet>
             <Header />
-            <main>
-                
-            </main>
+            <Main user={user[0].user} />
             <Footer />
         </HelmetProvider>
     );
 }
-
-Favorite.propTypes = {
-    className: PropTypes.string.isRequired
-}
-
-export default styled(Favorite)`
-
-`; 
