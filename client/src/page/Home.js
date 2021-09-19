@@ -12,7 +12,7 @@ import Footer from "../component/Footer";
 
 function Home({ className }) {
   const [page] = useState({
-    title: "Movie King",
+    title: "",
     body: "page-home",
   });
 
@@ -25,11 +25,6 @@ function Home({ className }) {
       </Helmet>
       <Header />
       <Main>
-        <div className={className}>
-          <div className="content-title">
-            <h1 className="">Movie</h1>
-          </div>
-        </div>
         <div className="content-list">
           <ListMovie movieName="all" />
         </div>
