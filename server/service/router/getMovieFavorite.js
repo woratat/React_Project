@@ -29,23 +29,23 @@ route.get('/', (req, res) => {
         jwt.verify(token, 'id_key_account', { algorithms: ['HS512'] }, async (err, decode) => {
             if (err) throw err;
 
-            const { account_id } = decode;
+            const { id } = decode;
 
-            if (!movie_id) {
-                return res.status(200).json({
+            if (!id) {
+                return res.status(400).json({
                     message: 'ID not fount'
                 });
             } else {
                 try {
                     const sql = "SELECT favorite.favorite_id AS favorite_id, movie.movie_image AS movie_image FROM favorite INNER JOIN movie ON favorite.movie_id = movie.movie_id WHERE account_id = ? ORDER BY favorite_id DESC";
-                    const [rows] = await connect.execute(sql, [account_id]);
+                    const [rows] = await connect.execute(sql, [id]);
 
                     if (rows) {
                         const result = await setToken(rows);
                         return res.status(200).json(result);
                     }
                 } catch (error) {
-                    new Error(error);
+                    console.log(error);
                 }
             }
         });

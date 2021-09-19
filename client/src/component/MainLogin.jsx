@@ -36,7 +36,8 @@ function MainLogin({ className }) {
       });
 
       if (res.status === 200) {
-        dispatch(fetchUser({ user: res.data.token }));
+        localStorage.setItem('token', res.data.token);
+        dispatch(fetchUser([{ user: res.data.token }]));
         history.push("/");
       }
     } catch (error) {

@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function HeaderNavLinkItem({ title, toLink}) {
     return (
-        <NavLink to={toLink} className="link-item-header" activeClassName="active-item-header">
+        <NavLink exact to={toLink} className="link-item-header" activeClassName="active-item-header">
             <span>{ title }</span>           
         </NavLink>
     );

@@ -5,14 +5,16 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './page/Home';
 import Login from './page/Login';
 import Detail from './page/Detail';
+import Favorite from './page/Favorite';
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/detail/:token" component={Detail} />
-        <Route path="/login" component={Login} />
-        <Route path="/" component={Home} />
+        <Route path="/detail/:token" component={Detail} sensitive strict />
+        <Route path="/favorite" component={Favorite} sensitive strict />
+        <Route path="/login" component={Login} sensitive strict />
+        <Route path="/" component={Home} sensitive strict />
       </Switch>
     </Router>
   );

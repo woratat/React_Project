@@ -12,10 +12,10 @@ const corsOption = {
 }
 
 route.use(cors(corsOption));
-route.get('/', passport.authenticate('basic', { session: false }), (req, res) => {
-    if (req.user.error) {
+route.get('/', passport.authenticate('bearer', { session: false }), (req, res) => {
+    if (!req.user) {
         return res.status(400).json({
-            message: req.user.message,
+            message: req.flash('message')
         });
     } else {
         const { id, username } = req.user;
