@@ -8,6 +8,7 @@ import { useBody } from "../use";
 import Header from "../component/Header";
 import Main from "../component/MainHome";
 import ListMovie from "../component/ListMovie";
+import AllMovie from "../component/AllMovie";
 import Footer from "../component/Footer";
 
 function Home({ className }) {
@@ -27,6 +28,7 @@ function Home({ className }) {
       <Main>
         <div className="content-list">
           <ListMovie movieName="all" />
+          <AllMovie movieName="all" />
         </div>
       </Main>
       <Footer />

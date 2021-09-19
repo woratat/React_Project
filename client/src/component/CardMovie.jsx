@@ -10,7 +10,7 @@ function CardMovie({ className, item }) {
   return (
     <Link to="/">
       <img
-        className={styles.row_poster}
+        className={className}
         src={movie.movie_image}
         alt={movie.movie_name}
       />

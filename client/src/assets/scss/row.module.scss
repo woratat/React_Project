@@ -1,8 +1,9 @@
 .row_posters {
   display: flex;
   column-gap: 1rem;
-  overflow-x: auto;
   overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
 }
 
 .row_poster {
@@ -15,5 +16,28 @@
   transform: scale(1.06);
 }
 .row_posters::-webkit-scrollbar {
-  width: 0;
+  display: none;
+}
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+}
+input[type="radio"] {
+  display: none;
+}
+
+.all_movie {
+  display: grid;
+  grid-template-columns: 350px auto auto auto;
+  grid-gap: 1px;
+  padding: 10px;
+}
+
+.card {
+  margin-top: 1rem;
+}
+
+.image {
+  object-fit: contain;
+  max-height: 300px;
 }

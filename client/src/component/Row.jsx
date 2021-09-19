@@ -8,7 +8,13 @@ function Row({ title, data }) {
 
       <div className={styles.row_posters}>
         {data.map((item) => {
-          return <CardMovie item={item} />
+          return (
+            <CardMovie
+              item={item}
+              key={item.movie_id}
+              className={styles.row_poster}
+            />
+          );
         })}
       </div>
     </div>
