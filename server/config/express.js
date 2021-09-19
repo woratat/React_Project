@@ -1,14 +1,21 @@
 const express = require('express');
+const passport = require('../config/passport');
 
 // config app
 const app = express();
 
 // route
+const getUser = require('../service/auth/login');
 const getMovieList = require('../service/router/getMovieList');
 const getMovieDetail = require('../service/router/getMovieDetail');
 const getCarousel = require('../service/router/getCarousel');
+const getFavorite = require('../service/router/getMovieFavorite');
+const postFavorite = require('../service/router/postMovieFavorite');
+const postComment = require('../service/router/postComment');
+const updateComment = require('../service/router/updateComment');
 
 module.exports = () => {
+    passport();
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
 
@@ -30,9 +37,14 @@ module.exports = () => {
         });
     }
 
+    app.use('/api/auth/user', getUser);
     app.use('/api/get/movieList', getMovieList);
     app.use('/api/get/movieDetail', getMovieDetail);
     app.use('/api/get/carousel', getCarousel);
+    app.use('/api/get/favorite', getFavorite);
+    app.use('/api/post/favorite', postFavorite);
+    app.use('/api/post/comment', postComment);
+    app.use('/api/update/comment', updateComment);
 
     return { listen };
 }
