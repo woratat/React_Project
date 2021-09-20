@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../assets/scss/row.module.scss";
-import CardMovie from "./CardMovie";
-function Row({ title, data }) {
+import CardSerie from "./CardSerie";
+function SeriesRow({ title, data }) {
   return (
     <div className={styles.row}>
       <h2>{title}</h2>
@@ -9,9 +9,9 @@ function Row({ title, data }) {
       <div className={styles.row_posters}>
         {data.map((item) => {
           return (
-            <CardMovie
+            <CardSerie
               item={item}
-              key={item.movie_id}
+              key={item.tv_id}
               className={styles.row_poster}
             />
           );
@@ -21,4 +21,4 @@ function Row({ title, data }) {
   );
 }
 
-export default Row;
+export default SeriesRow;

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 // component
-import Row from "../component/Row";
+import SeriesRow from "./SeriesRow";
 
 export default function ListSeries({ movieName }) {
-  const [movies, setMovies] = useState([]);
+  const [series, setSeries] = useState([]);
   useEffect(() => {
     getMovieList(movieName);
   }, [movieName]);
@@ -19,7 +19,7 @@ export default function ListSeries({ movieName }) {
         timeout: 2000,
       });
 
-      setMovies(res.data);
+      setSeries(res.data);
     } catch (error) {
       if (error.response) {
         console.error(error.response.message);
@@ -29,7 +29,10 @@ export default function ListSeries({ movieName }) {
 
   return (
     <>
-      <Row title="Trending" data={movies}></Row>
+      <SeriesRow title="Trending" data={series} />
+      <SeriesRow title="Comedy" data={series} />
+      <SeriesRow title="Horror" data={series} />
+      <SeriesRow title="Action" data={series} />
     </>
   );
 }
