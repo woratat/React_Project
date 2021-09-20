@@ -6,7 +6,9 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import axios from "axios";
 import validator from "validator";
 import { useParams, Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { fetchUser } from '../actions/userAction';
+import { getUser } from '../auth/user.auth';
 
 // component
 import Header from "../component/Header";
@@ -20,9 +22,9 @@ function Detail({ className }) {
     title: "",
     body: "page-detail",
   });
-
   const [movies, setMovies] = useState("");
   const { token } = useParams();
+  const dispatch = useDispatch();
 
   useBody(page.body);
 
@@ -45,6 +47,18 @@ function Detail({ className }) {
     getMovie();
   }, [token]);
 
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        dispatch(fetchUser( await getUser() ));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetch();
+  }, [dispatch]);
+
   if (!validator.isJWT(token)) {
     return <Redirect to="/" />;
   }
@@ -57,9 +71,6 @@ function Detail({ className }) {
       <Header />
       <Main>
         <div className={className}>
-          <div className="title">
-            <h2>Movie Detail</h2>
-          </div>
           <div className="content">
             <div className="content-trailer">
               <img src={movies.movie_image} alt="poster" />
