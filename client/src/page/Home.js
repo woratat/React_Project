@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import { useDispatch } from 'react-redux';
+import { fetchUser } from '../actions/userAction';
+import { getUser } from '../auth/user.auth';
 import { useBody } from "../use";
 
 // component
@@ -16,8 +19,21 @@ function Home({ className }) {
     title: "",
     body: "page-home",
   });
+  const dispatch = useDispatch(); 
 
   useBody(page.body);
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        dispatch(fetchUser( await getUser() ));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetch();
+  }, [dispatch]);
 
   return (
     <HelmetProvider>

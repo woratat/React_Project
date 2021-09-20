@@ -7,15 +7,16 @@ function Row({ title, data }) {
       <h2>{title}</h2>
 
       <div className={styles.row_posters}>
-        {data.map((item) => {
+        {/* {data.map((item) => {
           return (
-            <CardMovie
-              item={item}
-              key={item.movie_id}
-              className={styles.row_poster}
-            />
+            <></>
+            // <CardMovie
+            //   item={item}
+            //   key={item.movie_id}
+            //   className={styles.row_poster}
+            // />
           );
-        })}
+        })} */}
       </div>
     </div>
   );

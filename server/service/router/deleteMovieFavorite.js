@@ -35,7 +35,7 @@ route.delete('/', async (req, res) => {
                 if (result) {
                     return res.status(200).json({
                         message: 'Remove movie successfully',
-                        favorite_id: decode.favorite_id
+                        favorite_id: token
                     });
                 }
             }

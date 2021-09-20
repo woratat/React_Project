@@ -11,6 +11,7 @@ import CardMovieFavorite from './CardMovieFavorite';
 function MainFavorite({ className, user }) {
     const movies = useSelector((state) => state.movie_favorite);
     const dispatch = useDispatch();
+    console.log(movies);
 
     useEffect(() => {
         const getMovieFavorite = async () => {
@@ -37,7 +38,7 @@ function MainFavorite({ className, user }) {
         <main className={className}>
             <div className="show-content-favorite">
                 { movies.length === 0 ? 
-                    <div>
+                    <div className="show-not-fount">
                        <h1>Movie not fount</h1> 
                     </div>
                 :
@@ -71,5 +72,9 @@ export default styled(MainFavorite)`
         grid-template-columns: repeat(4, .5fr);
         column-gap: 3rem;
         row-gap: 1.5rem;
+    }
+    
+    .show-not-fount {
+        margin: 5.3rem 0;
     }
 `;

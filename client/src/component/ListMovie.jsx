@@ -30,8 +30,6 @@ export default function ListMovie({ movieName }) {
     <>
       <Row title="Trending" data={movies}></Row>
       <Row title="New movie" data={movies}></Row>
-      <Row title="Horror Movie" data={movies}></Row>
-      <Row title="Comedy" data={movies}></Row>
     </>
   );
 }

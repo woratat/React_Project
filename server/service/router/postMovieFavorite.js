@@ -13,7 +13,7 @@ const corsOption = {
 }
 
 route.use(cors(corsOption));
-route.post('/:token', async (req, res) => {
+route.post('/:token', cors(corsOption), async (req, res) => {
     const token = req.params.token;
 
     if (!token) {
@@ -44,25 +44,25 @@ route.post('/:token', async (req, res) => {
                 const account = jwt.verify(token, 'id_key_account', { algorithms: ['HS512'] });
                 const movie = jwt.verify(token_movie, 'id_key_movie', { algorithms: ['HS512'] });
 
-                const { account_id } = account;
+                const { id } = account;
                 const { movie_id } = movie;
 
-                if (!account_id || !movie_id) {
+                if (!id || !movie_id) {
                     return res.status(200).json({
                         message: 'ID and movie ID not fount'
                     });
                 } else {
                     const sql = "INSERT INTO favorite (account_id, movie_id) VALUES (?,?)";
-                    const [result] = await connect.execute(sql, [account_id, movie_id]);
+                    const [result] = await connect.execute(sql, [id, movie_id]);
                     
                     if (result) {
-                        return res.status(201).json({
+                        return res.status(200).json({
                             message: 'Add movie successfully'
                         });
                     }
                 }
             } catch (error) {
-                new Error(error);
+                console.log(error);
             }
         }
     }

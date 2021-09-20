@@ -14,7 +14,6 @@ const io = new Server(server, {
         origin: '*',
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-
     }
 });
 
@@ -38,6 +37,7 @@ module.exports = () => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
     app.use(flash());
+    app.use(cors());
 
     app.get('/', (req, res) => {
         return res.status(200).json({

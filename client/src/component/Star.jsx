@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 
 export default function Star({ like }) {
-  const [hover, setHover] = useState(null);
   let rating = like / 2;
   let ratingValue = 0;
+
   const getColor = () => {
     if (ratingValue <= rating) {
       return "#ffc107";
@@ -11,12 +11,14 @@ export default function Star({ like }) {
       return "#e4e5e9";
     }
   };
+
+
   return (
     <div>
-      {[...Array(5)].map(() => {
+      {[...Array(5)].map((val, index) => {
         ratingValue += +1;
         return (
-          <i className="bx bxs-star" style={{ color: getColor() }} size={20} />
+          <i key={index} className="bx bxs-star" style={{ color: getColor() }} size={20} />
         );
       })}
     </div>
