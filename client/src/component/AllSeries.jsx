@@ -44,7 +44,6 @@ export default function AllSeries({ movieName }) {
               <Link to="/">
                 <h2>{serie.tv_name}</h2>
               </Link>
-              <h3>Rating: {serie.tv_like}</h3>
               <Star like={serie.tv_like} />
             </div>
           );

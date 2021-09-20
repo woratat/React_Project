@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function CardMovie({ className, item }) {
   const [movie, setMovie] = useState(item);
   return (
-    <Link to="/">
+    <Link to={`/detail/${item.movie_id}`}>
       <img
         className={className}
         src={movie.movie_image}
