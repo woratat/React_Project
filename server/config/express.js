@@ -17,6 +17,7 @@ const deleteFavorite = require('../service/router/deleteMovieFavorite');
 const postComment = require('../service/router/postComment');
 const updateComment = require('../service/router/updateComment');
 const getTvShow = require('../service/router/getTvShow');
+const getSerieDetail = require('../service/router/getSerieDetail');
 
 
 module.exports = () => {
@@ -54,6 +55,7 @@ module.exports = () => {
     app.use('/api/update/comment', updateComment);
     app.use('/api/get/tvShow', getTvShow);
     app.use('/api/delete/favorite', deleteFavorite);
+    app.use('/api/get/serieDetail', getSerieDetail);
 
     return { listen };
 }
