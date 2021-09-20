@@ -7,11 +7,13 @@ import Login from "./page/Login";
 import Detail from "./page/Detail";
 import Favorite from "./page/Favorite";
 import TvShow from "./page/TvShow";
+import Test from './page/Test';
 
 function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/test" component={Test} />
         <Route path="/detail/:token" component={Detail} sensitive strict />
         <Route path="/favorite" component={Favorite} sensitive strict />
         <Route path="/tv" component={TvShow} sensitive strict />

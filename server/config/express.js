@@ -1,9 +1,22 @@
 const express = require('express');
+const cors = require('cors');
+const http = require('http');
 const passport = require('../config/passport');
 const flash = require('connect-flash');
 
+const { Server } = require("socket.io");
+
 // config app
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+
+    }
+});
 
 // route
 const getUser = require('../service/auth/login');
@@ -38,7 +51,7 @@ module.exports = () => {
     });
 
     const listen = (port) => {
-        app.listen(port, () => {
+        server.listen(port, () => {
             console.log(`server running on port ${port}`);
         });
     }
@@ -50,7 +63,7 @@ module.exports = () => {
     app.use('/api/get/carousel', getCarousel);
     app.use('/api/get/favorite', getFavorite);
     app.use('/api/post/favorite', postFavorite);
-    app.use('/api/post/comment', postComment);
+    app.use('/api/post/comment', postComment(io));
     app.use('/api/update/comment', updateComment);
     app.use('/api/get/tvShow', getTvShow);
     app.use('/api/delete/favorite', deleteFavorite);
