@@ -55,9 +55,3 @@ export default styled(AllMovie)`
   column-gap: 3rem;
   row-gap: 1.5rem;
 `;
-
-{/* <Link to="/">
-                <h2>{movie.movie_name}</h2>
-              </Link>
-              <h3>Rating: {movie.movie_like}</h3>
-              <Star like={movie.movie_like} /> */}
