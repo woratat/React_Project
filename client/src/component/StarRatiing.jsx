@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import { FaStar } from "react-icons/fa";
-import styles from "../assets/scss/row.module.scss";
 
 export default function StarRatiing() {
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
+  const getColor = () => {
+    if (ratingValue <= (rating || hover)) {
+      return "#ffc107";
+    } else {
+      return "#e4e5e9";
+    }
+  };
   return (
     <div>
       {[...Array(5)].map((star, i) => {
@@ -20,9 +25,10 @@ export default function StarRatiing() {
               onMouseLeave={() => setHover(null)}
               id=""
             />
-            <FaStar
-              className={styles.star}
-              color={ratingValue <= (hover || rating) ? "#ffc107" : "#e4e5e9"}
+            <i
+              className="bx bxs-star"
+              style={{ color: getColor() }}
+              size={20}
             />
           </label>
         );
