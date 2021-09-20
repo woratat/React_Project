@@ -21,6 +21,7 @@
 .star {
   cursor: pointer;
   transition: color 200ms;
+  color: "#ffc107";
 }
 input[type="radio"] {
   display: none;
@@ -40,4 +41,10 @@ input[type="radio"] {
 .image {
   object-fit: contain;
   max-height: 300px;
+}
+
+.bx {
+  .bxs-star {
+    color: yellow;
+  }
 }
