@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Helmet, HelmetProvider } from "react-helmet-async";
@@ -15,13 +15,9 @@ import AllMovie from "../component/AllMovie";
 import Footer from "../component/Footer";
 
 function Home({ className }) {
-  const [page] = useState({
-    title: "",
-    body: "page-home",
-  });
   const dispatch = useDispatch(); 
 
-  useBody(page.body);
+  useBody("page-home");
 
   useEffect(() => {
     const fetch = async () => {
@@ -38,7 +34,7 @@ function Home({ className }) {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>{page.title}</title>
+        <title>Movie King</title>
       </Helmet>
       <Header />
       <Main>

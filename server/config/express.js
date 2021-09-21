@@ -31,6 +31,7 @@ const updateComment = require('../service/router/updateComment');
 const getTvShow = require('../service/router/getTvShow');
 const getSerieDetail = require('../service/router/getSerieDetail');
 const getComment = require('../service/router/getComment');
+const deleteComment = require('../service/router/deleteComment');
 
 
 module.exports = () => {
@@ -64,6 +65,14 @@ module.exports = () => {
             socket.on('sand-message', (message) => {
                 io.sockets.in(room).emit('message', message);
             });
+
+            socket.on('sand-update', (message) => {
+                io.sockets.in(room).emit('message-update', message);
+            });
+
+            socket.on('sand-delete', (message) => {
+                io.sockets.in(room).emit('message-delete', message);
+            })
         });
     });
 
@@ -80,6 +89,7 @@ module.exports = () => {
     app.use('/api/delete/favorite', deleteFavorite);
     app.use('/api/get/serieDetail', getSerieDetail);
     app.use('/api/get/comment', getComment);
+    app.use('/api/delete/comment', deleteComment);
 
     return { listen };
 }

@@ -9,11 +9,17 @@ export default createReducer([], {
         state.push({ ...action.payload });
     },
     [updateComment]: (state, action) => {
+        const comment_index = state.findIndex((value) => {
+            return value.comment_id === parseInt(action.payload.comment_id);
+        });
 
+        state[comment_index].message = action.payload.message;
     },
     [deleteComment]: (state, action) => {
         const index = state.findIndex((value) => {
-            
+            return value.comment_id === parseInt(action.payload.comment_id);
         });
+
+        state.splice(index, 1);
     }
 });

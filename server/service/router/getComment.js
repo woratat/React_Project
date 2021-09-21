@@ -32,7 +32,7 @@ route.get('/:token', (req, res) => {
                 const { movie_id } = decode;
 
                 try {
-                    const sql = "SELECT comment_data.movie_id AS movie_id, account.username AS username, comment_data.account_id_reply AS comment_reply, comment_data.comment_message AS message FROM comment_data INNER JOIN account ON comment_data.account_id = account.account_id WHERE comment_data.movie_id = ?";
+                    const sql = "SELECT comment_data.comment_id AS comment_id, comment_data.movie_id AS movie_id, account.username AS username, comment_data.account_id_reply AS comment_reply, comment_data.comment_message AS message FROM comment_data INNER JOIN account ON comment_data.account_id = account.account_id WHERE comment_data.movie_id = ?";
                     const [result] = await connect.execute(sql, [movie_id]);
 
                     if (result) {

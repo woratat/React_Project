@@ -51,12 +51,18 @@ module.exports = (io) => {
                                 const [result] = await connect.execute(sql, [id,movie_id,message]);
 
                                 if (result) {
-                                    return res.status(200).json({
-                                        movie_id: movie_id,
-                                        username: username,
-                                        comment_reply: 0,
-                                        message: message
-                                    });
+                                    const sql_comment_id = "SELECT comment_id FROM comment_data WHERE movie_id = ? ORDER BY comment_id DESC";
+                                    const [comments] = await connect.execute(sql_comment_id, [movie_id]);
+
+                                    if (comments) {
+                                        return res.status(200).json({
+                                            comment_id: comments[0].comment_id,
+                                            movie_id: movie_id,
+                                            username: username,
+                                            comment_reply: 0,
+                                            message: message
+                                        });
+                                    }
                                 }
                             } catch (error) {
                                 console.log(error);
