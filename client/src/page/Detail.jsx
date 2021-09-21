@@ -15,6 +15,7 @@ import Header from "../component/Header";
 import Main from "../component/MainDetail";
 import Footer from "../component/Footer";
 import ShowTrailer from "../component/ShowTrailer";
+import ShowComment from "../component/ShowComment";
 import AddComment from "../component/AddComment";
 
 function Detail({ className }) {
@@ -91,7 +92,8 @@ function Detail({ className }) {
             </div>
           </div>
           <div className="comment">
-            <AddComment />
+            <ShowComment />
+            <AddComment movieToken={movies.movie_id} />
           </div>
         </div>
       </Main>

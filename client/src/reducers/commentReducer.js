@@ -12,6 +12,8 @@ export default createReducer([], {
 
     },
     [deleteComment]: (state, action) => {
-        
+        const index = state.findIndex((value) => {
+            
+        });
     }
 });

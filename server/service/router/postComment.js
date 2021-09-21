@@ -58,7 +58,12 @@ module.exports = (io) => {
                                         message: message
                                     });
 
-                                    return res.sendStatus(200);
+                                    return res.status(200).json({
+                                        movie_id: movie_id,
+                                        username: username,
+                                        comment_reply: 0,
+                                        message: message
+                                    });
                                 }
                             } catch (error) {
                                 console.log(error);

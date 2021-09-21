@@ -2,27 +2,29 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
 import styled from "styled-components";
+import { configAuth } from '../auth/authHeader';
 
-
-function AddComment({className}) {
+function AddComment({ movieToken, className }) {
   const [comment, setComment] = useState("");
 
   function onSubmit(event) {
     event.preventDefault();
-    addComment();
+    addCommentData();
   }
 
-  async function addComment() {
+  async function addCommentData() {
     try {
-      const response = await axios.post(
-        "http://localhost:5050/api/post/Comment",
-        {
-          message: comment,
-        },
-        {
-          timeout: 2000,
-        }
-      );
+      const res = await axios.post('http://localhost:5050/api/post/comment', {
+        token: movieToken,
+        message: comment
+      }, {
+        timeout: 2000,
+        headers: configAuth()
+      });
+
+      if (res.status === 200) {
+        setComment('');
+      }
     } catch (error) {
       console.log(error);
     }
@@ -50,13 +52,14 @@ function AddComment({className}) {
 }
 
 AddComment.propTypes = {
-  className: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired,
+  movieToken: PropTypes.string
 };
 
 export default styled(AddComment)`
-box-sizing: border-box;
+  box-sizing: border-box;
 
-.input-group textarea{
+  .input-group textarea{
     width: 100%;
     height: 60px;
     padding: 13px;
@@ -66,14 +69,14 @@ box-sizing: border-box;
     font-size: 16px;
     margin-top: 20px;
     border: 1px solid #bfbfbf;
-}
-textarea:focus{
+  }
+  textarea:focus{
     border: 2px solid rgba(48, 87, 225, 1);
-}
-textarea::-webkit-scrollbar{
+  }
+  textarea::-webkit-scrollbar{
     width: 0px;
-}
-button{
+  }
+  button{
     float: right;
     width: 5rem;
     height: 2rem;
@@ -83,5 +86,5 @@ button{
     cursor: pointer;
     outline: none;
     font-size: 1rem;
-}
+  }
 `;
