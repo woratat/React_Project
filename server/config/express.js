@@ -30,6 +30,8 @@ const postComment = require('../service/router/postComment');
 const updateComment = require('../service/router/updateComment');
 const getTvShow = require('../service/router/getTvShow');
 const getSerieDetail = require('../service/router/getSerieDetail');
+const getComment = require('../service/router/getComment');
+const { log } = require('console');
 
 
 module.exports = () => {
@@ -57,6 +59,15 @@ module.exports = () => {
         });
     }
 
+    io.sockets.on('connection', (socket) => {
+        socket.on('room', (room) => {
+            socket.join(room);
+            socket.on('sand-message', (message) => {
+                io.sockets.in(room).emit('message', message);
+            });
+        });
+    });
+
     app.use('/api/auth/user', getUser);
     app.use('/api/auth/check', checkUser);
     app.use('/api/get/movieList', getMovieList);
@@ -69,6 +80,7 @@ module.exports = () => {
     app.use('/api/get/tvShow', getTvShow);
     app.use('/api/delete/favorite', deleteFavorite);
     app.use('/api/get/serieDetail', getSerieDetail);
+    app.use('/api/get/comment', getComment);
 
     return { listen };
 }

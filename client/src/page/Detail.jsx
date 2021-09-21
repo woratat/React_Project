@@ -92,8 +92,8 @@ function Detail({ className }) {
             </div>
           </div>
           <div className="comment">
-            <ShowComment />
-            <AddComment movieToken={movies.movie_id} />
+            <ShowComment movie_token={token} id={movies.id} />
+            <AddComment movieToken={movies.movie_id} id={movies.id} />
           </div>
         </div>
       </Main>

@@ -75,6 +75,7 @@ const setToken = (data) => {
         if (Array.isArray(data)) {
             const newData = data.map((value) => {
                 return {
+                    id: value.movie_id,
                     movie_id: jwt.sign({ movie_id: value.movie_id }, 'id_key_movie', { algorithm: 'HS512' }),
                     movie_name: value.movie_name,
                     movie_image: value.movie_image,

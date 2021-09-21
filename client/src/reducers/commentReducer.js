@@ -6,7 +6,7 @@ export default createReducer([], {
         return action.payload;
     },
     [addComment]: (state, action) => {
-        return state.push({ ...action });
+        state.push({ ...action.payload });
     },
     [updateComment]: (state, action) => {
 

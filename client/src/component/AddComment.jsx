@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import axios from "axios";
+import socketIOClient from 'socket.io-client';
 import styled from "styled-components";
 import { configAuth } from '../auth/authHeader';
 
-function AddComment({ movieToken, className }) {
+function AddComment({ movieToken, className, id }) {
   const [comment, setComment] = useState("");
 
   function onSubmit(event) {
@@ -24,6 +25,9 @@ function AddComment({ movieToken, className }) {
 
       if (res.status === 200) {
         setComment('');
+        const socket = socketIOClient('http://localhost:5050').connect();
+        socket.emit('room', id);
+        socket.emit('sand-message', res.data);
       }
     } catch (error) {
       console.log(error);
@@ -32,7 +36,6 @@ function AddComment({ movieToken, className }) {
 
   return (
     <div className={className}>
-      <h1>Comments</h1>
       <form id="create-form" onSubmit={onSubmit}>
         <div className="input-group">
           <textarea
@@ -53,7 +56,8 @@ function AddComment({ movieToken, className }) {
 
 AddComment.propTypes = {
   className: PropTypes.string.isRequired,
-  movieToken: PropTypes.string
+  movieToken: PropTypes.string,
+  id: PropTypes.number
 };
 
 export default styled(AddComment)`

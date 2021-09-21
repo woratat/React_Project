@@ -51,12 +51,12 @@ module.exports = (io) => {
                                 const [result] = await connect.execute(sql, [id,movie_id,message]);
 
                                 if (result) {
-                                    io.sockets.emit('new-message', {
-                                        movie_id: movie_id,
-                                        username: username,
-                                        comment_reply: 0,
-                                        message: message
-                                    });
+                                    // io.sockets.emit('new-message', {
+                                    //     movie_id: movie_id,
+                                    //     username: username,
+                                    //     comment_reply: 0,
+                                    //     message: message
+                                    // });
 
                                     return res.status(200).json({
                                         movie_id: movie_id,
