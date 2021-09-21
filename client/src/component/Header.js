@@ -41,7 +41,7 @@ function Header({ className }) {
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(deleteUser());
-        localStorage.removeItem('token');
+        localStorage.clear();
         history.push('/');
       }
     });

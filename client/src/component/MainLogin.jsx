@@ -37,6 +37,7 @@ function MainLogin({ className }) {
 
       if (res.status === 200) {
         localStorage.setItem('token', res.data.token);
+        localStorage.setItem('username', res.data.username);
         dispatch(fetchUser([{ user: res.data.token }]));
         history.push("/");
       }

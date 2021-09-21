@@ -23,7 +23,8 @@ route.get('/', passport.authenticate('basic', { session: false }), (req, res) =>
 
         return res.status(200).json({
             message: 'login successfully',
-            token: token
+            token: token,
+            username: username
         });
     }
 });

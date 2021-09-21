@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../assets/scss/row.module.scss";
-import CardMovie from "./CardMovie";
 function Row({ title, data }) {
   return (
     <div className={styles.row}>

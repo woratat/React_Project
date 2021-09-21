@@ -19,7 +19,7 @@ import ShowComment from "../component/ShowComment";
 import AddComment from "../component/AddComment";
 
 function Detail({ className }) {
-  const [page] = useState({
+  const [page, setPage] = useState({
     title: "",
     body: "page-detail",
   });
@@ -39,6 +39,7 @@ function Detail({ className }) {
           }
         );
         setMovies(movie.data[0]);
+        setPage((page) => ({ ...page, title: `Movie King | ${movie.data[0].movie_name}` }))
       } catch (error) {
         if (error.response) {
           console.log(error.response);

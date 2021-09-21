@@ -31,7 +31,6 @@ const updateComment = require('../service/router/updateComment');
 const getTvShow = require('../service/router/getTvShow');
 const getSerieDetail = require('../service/router/getSerieDetail');
 const getComment = require('../service/router/getComment');
-const { log } = require('console');
 
 
 module.exports = () => {

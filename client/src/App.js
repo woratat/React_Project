@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ScrollToTop from "./component/ScrollToTop";
 
 // page component
 import Home from "./page/Home";
@@ -12,6 +13,7 @@ import TvDetail from "./page/TvDetail";
 function App() {
   return (
     <Router>
+      <ScrollToTop>
       <Switch>
         <Route path="/detail/:token" component={Detail} sensitive strict />
         <Route path="/tvdetail/:token" component={TvDetail} sensitive strict />
@@ -20,6 +22,7 @@ function App() {
         <Route path="/login" component={Login} sensitive strict />
         <Route path="/" component={Home} sensitive strict />
       </Switch>
+      </ScrollToTop>
     </Router>
   );
 }

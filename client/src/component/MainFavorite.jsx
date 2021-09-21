@@ -11,7 +11,6 @@ import CardMovieFavorite from './CardMovieFavorite';
 function MainFavorite({ className, user }) {
     const movies = useSelector((state) => state.movie_favorite);
     const dispatch = useDispatch();
-    console.log(movies);
 
     useEffect(() => {
         const getMovieFavorite = async () => {
