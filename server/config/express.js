@@ -33,6 +33,7 @@ const getSerieDetail = require('../service/router/getSerieDetail');
 const getComment = require('../service/router/getComment');
 const deleteComment = require('../service/router/deleteComment');
 const postCommentReply = require('../service/router/postCommentReply');
+const postAccount = require('../service/router/postAccount');
 
 
 module.exports = () => {
@@ -62,12 +63,11 @@ module.exports = () => {
 
     io.sockets.on('connection', (socket) => {
 
-        socket.on('disconnect', () => {
-            console.log('user disconnect');
-        });
+        // socket.on('disconnect', () => {
+        //     console.log('user disconnect');
+        // });
 
         socket.on('room', (room) => {
-            console.log(room); 
             socket.join(room);
             socket.on('sand-message', (message) => {
                 io.sockets.in(room).emit('message', message);
@@ -85,6 +85,7 @@ module.exports = () => {
 
     app.use('/api/auth/user', getUser);
     app.use('/api/auth/check', checkUser);
+    app.use('/api/post/account', postAccount);
     app.use('/api/get/movieList', getMovieList);
     app.use('/api/get/movieDetail', getMovieDetail);
     app.use('/api/get/carousel', getCarousel);
