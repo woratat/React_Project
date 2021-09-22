@@ -5,6 +5,7 @@ import ScrollToTop from "./component/ScrollToTop";
 // page component
 import Home from "./page/Home";
 import Login from "./page/Login";
+import Register from './page/Register';
 import Detail from "./page/Detail";
 import Favorite from "./page/Favorite";
 import TvShow from "./page/TvShow";
@@ -15,12 +16,13 @@ function App() {
     <Router>
       <ScrollToTop>
       <Switch>
-        <Route path="/detail/:token" component={Detail} sensitive strict />
-        <Route path="/tvdetail/:token" component={TvDetail} sensitive strict />
-        <Route path="/favorite" component={Favorite} sensitive strict />
-        <Route path="/tv" component={TvShow} sensitive strict />
-        <Route path="/login" component={Login} sensitive strict />
-        <Route path="/" component={Home} sensitive strict />
+        <Route path="/detail/:token" component={Detail} />
+        <Route path="/tvdetail/:token" component={TvDetail} />
+        <Route path="/favorite" component={Favorite} />
+        <Route path="/tv" component={TvShow} />
+        <Route path="/register" component={Register} />
+        <Route path="/login" component={Login} />
+        <Route path="/" component={Home} />
       </Switch>
       </ScrollToTop>
     </Router>

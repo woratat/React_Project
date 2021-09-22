@@ -4,16 +4,14 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 // component
 import Header from '../component/HeaderControl';
-import Main from '../component/MainLogin';
+import Main from '../component/MainRegister';
 import Footer from '../component/Footer';
 
-export default function Login({ className }) {
-    useBody('login-page');
-
+export default function Register() {
     return (
         <HelmetProvider>
             <Helmet>
-                <title>Movie King | Login</title>
+                <title>Movie King | Sign up</title>
             </Helmet>
             <Header />
             <Main />
