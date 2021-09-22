@@ -4,6 +4,7 @@ import styled from "styled-components";
 import socketIOClient from "socket.io-client";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchComment, addComment, updateComment, deleteComment } from "../actions/CommentAction";
+import { configAuth } from '../auth/authHeader';
 import swal from 'sweetalert2';
 import axios from "axios";
 
@@ -140,6 +141,39 @@ function ShowComment({ className, movie_token, id }) {
             }
         }
     });
+  }
+
+  const addCommentReply = async (comment_id) => {
+    const { value: text } = await swal.fire({
+      input: 'textarea',
+      inputLabel: 'Post comment',
+      inputPlaceholder: 'Type your message here...',
+      showCancelButton: true,
+      cancelButtonColor: '#f25',
+    });
+
+    if (text) {
+      try {
+        const res = await axios.post('http://localhost:5050/api/post/comment_reply', {
+          token: movie_token,
+          comment_id_reply: comment_id,
+          message: text
+        }, {
+          timeout: 2000,
+          headers: configAuth()
+        });
+
+        if (res.status === 200) {
+          const socket = socketIOClient('http://localhost:5050').connect();
+          socket.emit('room', id);
+          socket.emit('sand-message', res.data);
+        }
+      } catch (error) {
+        
+      }
+    } else if (text === '') {
+      swal.fire({ title: 'Error post comment', text: 'Please enter new comment', icon: 'error' });
+    }
   }
 
   const openMenu = (index) => {
@@ -289,7 +323,7 @@ function ShowComment({ className, movie_token, id }) {
                         <i className="bx bx-like icon-style-control"></i>
                       </div>
                       <div className="item-icon-control">
-                        <i className="bx bx-conversation icon-style-control"></i>
+                        <i className="bx bx-conversation icon-style-control" onClick={() => { addCommentReply(value.comment_id) }} ></i>
                       </div>
                       <div className="item-icon-control">
                         <i className="bx bx-share icon-style-control"></i>

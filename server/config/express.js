@@ -32,6 +32,7 @@ const getTvShow = require('../service/router/getTvShow');
 const getSerieDetail = require('../service/router/getSerieDetail');
 const getComment = require('../service/router/getComment');
 const deleteComment = require('../service/router/deleteComment');
+const postCommentReply = require('../service/router/postCommentReply');
 
 
 module.exports = () => {
@@ -90,6 +91,7 @@ module.exports = () => {
     app.use('/api/get/serieDetail', getSerieDetail);
     app.use('/api/get/comment', getComment);
     app.use('/api/delete/comment', deleteComment);
+    app.use('/api/post/comment_reply', postCommentReply);
 
     return { listen };
 }
