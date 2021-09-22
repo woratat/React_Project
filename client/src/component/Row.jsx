@@ -9,7 +9,6 @@ function Row({ title, data }) {
         {data.map((item) => {
           return (
             <img
-              style={styles.row_poster}
               src={item.movie_image}
               alt={item.movie_name}
               key={item.movie_id}

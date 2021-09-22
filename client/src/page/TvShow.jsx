@@ -27,7 +27,7 @@ function Home({ className }) {
       <Header />
       <Main>
         <div className="content-list">
-          <ListSeries movieName="all" />
+          {/* <ListSeries movieName="all" /> */}
           <AllSeries movieName="all" />
         </div>
       </Main>

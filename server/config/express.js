@@ -31,8 +31,15 @@ const updateComment = require('../service/router/updateComment');
 const getTvShow = require('../service/router/getTvShow');
 const getSerieDetail = require('../service/router/getSerieDetail');
 const getComment = require('../service/router/getComment');
+const getCommentTv = require('../service/router/getCommentTv');
 const deleteComment = require('../service/router/deleteComment');
 const postCommentReply = require('../service/router/postCommentReply');
+const postCommentTv = require('../service/router/postCommentTv');
+const deleteCommentTv = require('../service/router/deleteCommentTv');
+const updateCommentTv = require('../service/router/updateCommentTv');
+const postCommentTvReply = require('../service/router/postCommentTvReply');
+
+
 
 
 module.exports = () => {
@@ -61,13 +68,7 @@ module.exports = () => {
     }
 
     io.sockets.on('connection', (socket) => {
-
-        socket.on('disconnect', () => {
-            console.log('user disconnect');
-        });
-
-        socket.on('room', (room) => {
-            console.log(room); 
+        socket.on('room', (room) => { //room = movie id
             socket.join(room);
             socket.on('sand-message', (message) => {
                 io.sockets.in(room).emit('message', message);
@@ -91,6 +92,7 @@ module.exports = () => {
     app.use('/api/get/favorite', getFavorite);
     app.use('/api/post/favorite', postFavorite);
     app.use('/api/post/comment', postComment(io));
+    app.use('/api/post/commentTv', postCommentTv(io));
     app.use('/api/update/comment', updateComment);
     app.use('/api/get/tvShow', getTvShow);
     app.use('/api/delete/favorite', deleteFavorite);
@@ -98,6 +100,11 @@ module.exports = () => {
     app.use('/api/get/comment', getComment);
     app.use('/api/delete/comment', deleteComment);
     app.use('/api/post/comment_reply', postCommentReply);
+    app.use('/api/get/commentTv', getCommentTv);
+    app.use('/api/delete/commentTv', deleteCommentTv);
+    app.use('/api/update/commentTv', updateCommentTv);
+    app.use('/api/post/commentTv_reply', postCommentTvReply);
 
+    
     return { listen };
 }

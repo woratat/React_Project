@@ -5,7 +5,7 @@ import socketIOClient from 'socket.io-client';
 import styled from "styled-components";
 import { configAuth } from '../auth/authHeader';
 
-function AddComment({ movieToken, className, id }) {
+function AddCommentTv({ tvToken, className, id }) {
   const [comment, setComment] = useState("");
 
   function onSubmit(event) {
@@ -15,8 +15,8 @@ function AddComment({ movieToken, className, id }) {
 
   async function addCommentData() {
     try {
-      const res = await axios.post('http://localhost:5050/api/post/comment', {
-        token: movieToken,
+      const res = await axios.post('http://localhost:5050/api/post/commentTv', {
+        token: tvToken,
         message: comment
       }, {
         timeout: 2000,
@@ -54,13 +54,13 @@ function AddComment({ movieToken, className, id }) {
   );
 }
 
-AddComment.propTypes = {
+AddCommentTv.propTypes = {
   className: PropTypes.string.isRequired,
-  movieToken: PropTypes.string,
+  tvToken: PropTypes.string,
   id: PropTypes.number
 };
 
-export default styled(AddComment)`
+export default styled(AddCommentTv)`
   box-sizing: border-box;
 
   .input-group textarea{
