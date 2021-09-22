@@ -61,7 +61,13 @@ module.exports = () => {
     }
 
     io.sockets.on('connection', (socket) => {
+
+        socket.on('disconnect', () => {
+            console.log('user disconnect');
+        });
+
         socket.on('room', (room) => {
+            console.log(room); 
             socket.join(room);
             socket.on('sand-message', (message) => {
                 io.sockets.in(room).emit('message', message);

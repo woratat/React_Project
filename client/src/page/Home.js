@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useDispatch } from 'react-redux';
 import { fetchUser } from '../actions/userAction';
@@ -14,8 +12,8 @@ import ListMovie from "../component/ListMovie";
 import AllMovie from "../component/AllMovie";
 import Footer from "../component/Footer";
 
-function Home({ className }) {
-  const dispatch = useDispatch(); 
+export default function Home() {
+  const dispatch = useDispatch();
 
   useBody("page-home");
 
@@ -47,9 +45,3 @@ function Home({ className }) {
     </HelmetProvider>
   );
 }
-
-Home.propTypes = {
-  className: PropTypes.string.isRequired,
-};
-
-export default styled(Home)``;

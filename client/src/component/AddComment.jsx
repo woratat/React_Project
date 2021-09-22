@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { configAuth } from '../auth/authHeader';
 
 function AddComment({ movieToken, className, id }) {
+  console.log(id);
   const [comment, setComment] = useState("");
 
   function onSubmit(event) {
@@ -25,7 +26,7 @@ function AddComment({ movieToken, className, id }) {
 
       if (res.status === 200) {
         setComment('');
-        const socket = socketIOClient('http://localhost:5050').connect();
+        const socket = socketIOClient('http://localhost:5050');
         socket.emit('room', id);
         socket.emit('sand-message', res.data);
       }

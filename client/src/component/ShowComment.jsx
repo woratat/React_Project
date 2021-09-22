@@ -9,6 +9,7 @@ import swal from 'sweetalert2';
 import axios from "axios";
 
 function ShowComment({ className, movie_token, id }) {
+  console.log(id);
   const comments = useSelector((state) => state.comment);
   const dispatch = useDispatch();
 
@@ -34,8 +35,8 @@ function ShowComment({ className, movie_token, id }) {
   }, [dispatch, movie_token]);
 
   useEffect(() => {
+    const socket = socketIOClient(`http://localhost:5050`); 
     const response = () => {
-      const socket = socketIOClient(`http://localhost:5050`);
       socket.emit("room", id);
       socket.on("message", (newMessage) => {
         dispatch(
@@ -48,14 +49,18 @@ function ShowComment({ className, movie_token, id }) {
           })
         );
       });
+      
     };
 
     response();
+    return () => {
+      socket.disconnect();
+    }
   }, [dispatch, id]);
 
   useEffect(() => {
+    const socket = socketIOClient(`http://localhost:5050`);
     const response = () => {
-        const socket = socketIOClient(`http://localhost:5050`);
         socket.emit("room", id);
         socket.on('message-update', (dataUpdate) => {
             dispatch(updateComment({ comment_id: dataUpdate.comment_id, message: dataUpdate.message_update }));
@@ -63,11 +68,15 @@ function ShowComment({ className, movie_token, id }) {
     }
 
     response();
+
+    return () => {
+      socket.disconnect();
+    }
   }, [dispatch, id]);
 
   useEffect(() => {
+    const socket = socketIOClient(`http://localhost:5050`);
     const response = () => {
-        const socket = socketIOClient(`http://localhost:5050`);
         socket.emit("room", id);
         socket.on('message-delete', (dataDelete) => {
             dispatch(deleteComment({ comment_id: dataDelete.comment_id }));
@@ -75,6 +84,9 @@ function ShowComment({ className, movie_token, id }) {
     }
 
     response();
+    return () => {
+      socket.disconnect();
+    }
   }, [dispatch, id]);
 
   const updateMessage = async (comment_id) => {
