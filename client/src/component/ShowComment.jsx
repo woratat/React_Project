@@ -9,8 +9,8 @@ import swal from 'sweetalert2';
 import axios from "axios";
 
 function ShowComment({ className, movie_token, id }) {
-  console.log(id);
   const comments = useSelector((state) => state.comment);
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -330,6 +330,7 @@ function ShowComment({ className, movie_token, id }) {
                         );
                       }
                     })}
+                    { user.length === 1 ?
                     <div className="content-control">
                       <div className="item-icon-control">
                         <i className="bx bx-like icon-style-control"></i>
@@ -341,6 +342,7 @@ function ShowComment({ className, movie_token, id }) {
                         <i className="bx bx-share icon-style-control"></i>
                       </div>
                     </div>
+                    : <></> }
                   </div>
                 </div>
               );

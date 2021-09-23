@@ -74,10 +74,10 @@ function Header({ className }) {
         :
           <>
             <div className="login-controller">
-              <Link to="login" className="btn-link">Sign in</Link>
+              <Link to="/login" className="btn-link">Sign in</Link>
             </div>
             <div className="logout-controller">
-              <Link to="register" className="btn-link">Sign Up</Link>
+              <Link to="/register" className="btn-link">Sign Up</Link>
             </div>
           </>
         }

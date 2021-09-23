@@ -4,9 +4,11 @@ import axios from "axios";
 import socketIOClient from 'socket.io-client';
 import styled from "styled-components";
 import { configAuth } from '../auth/authHeader';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function AddComment({ movieToken, className, id }) {
-  console.log(id);
+  const user = useSelector((state) => state.user);
   const [comment, setComment] = useState("");
 
   function onSubmit(event) {
@@ -48,7 +50,7 @@ function AddComment({ movieToken, className, id }) {
             onChange={(event) => setComment(event.target.value)}
           />
         </div>
-        <button type="submit">Post</button>
+        { user.length === 1 ? <button type="submit">Post</button> : <Link to="/login" className="btn-back">Post</Link> }
       </form>
     </div>
     
@@ -81,7 +83,7 @@ export default styled(AddComment)`
   textarea::-webkit-scrollbar{
     width: 0px;
   }
-  button{
+  button, .btn-back {
     float: right;
     width: 5rem;
     height: 2rem;
@@ -91,5 +93,8 @@ export default styled(AddComment)`
     cursor: pointer;
     outline: none;
     font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 `;

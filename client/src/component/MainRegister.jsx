@@ -5,8 +5,6 @@ import validator from "validator";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import swal from 'sweetalert2';
-import { useDispatch } from "react-redux";
-import { fetchUser } from "../actions/userAction";
 
 function MainRegister({ className }) {
     const [account, setAccount] = useState({
@@ -17,7 +15,6 @@ function MainRegister({ className }) {
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState("");
     const { username, password, confirmPassword } = account;
-    const dispatch = useDispatch();
     const history = useHistory();
 
     const handleChange = (e) => {

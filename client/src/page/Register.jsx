@@ -8,6 +8,8 @@ import Main from '../component/MainRegister';
 import Footer from '../component/Footer';
 
 export default function Register() {
+    useBody('register-page');
+
     return (
         <HelmetProvider>
             <Helmet>
