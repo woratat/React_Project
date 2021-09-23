@@ -1,33 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteUser } from '../actions/userAction';
 import swal from 'sweetalert2';
+import validator from "validator";
 
 // component
 import NavLinkItem from './HeaderNavLinkItem';
+import ItemListSearchNew from "./ItemListSearchNew";
+import ItemListSearchPrev from "./ItemListSearchPrev";
+import axios from "axios";
 
 function Header({ className }) {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [inputs, setInputs] = useState('');
+  const [dataSearch, setDataSearch] = useState(JSON.parse(localStorage.getItem('search')) || []);
   const history = useHistory();
   
   const handleChange = (e) => {
     setInputs(e.target.value);
   }
 
-  const onEnter = (e) => {
-    if (e.code === 'Enter') {
-      
-    }
-  }
+  useEffect(() => {
+    const getSearch = async () => {
+      try {
+        const res = await axios.get('http://localhost:5050/api/get/search', {
+          timeout: 2000,
+          params: {
+            name: inputs
+          }
+        });
 
-  const handleClick = () => {
-    
-  }
+        if (res.status === 200) {
+          if (res.data.message) {
+            setDataSearch([]);
+          } else {
+            setDataSearch(res.data);
+          }
+        }
+      } catch (error) {
+        console.log(error.response);
+      }
+    }
+
+    getSearch();
+  }, [inputs]);
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -61,8 +81,36 @@ function Header({ className }) {
         { user.length === 1 ? <NavLinkItem toLink="/favorite" title="Favorite" /> : <></> }
       </ul>
       <div className="search-box">
-        <input type="text" placeholder="Search" className="search-text" onChange={handleChange} onKeyDown={onEnter} value={inputs}></input>
-        <i className={inputs.length < 10 ? 'bx bx-search icon-search' : ''} onClick={handleClick}></i>
+        <input type="text" placeholder="Search" className="search-text" onChange={handleChange} value={inputs}></input>
+        <i className={inputs.length < 10 ? 'bx bx-search icon-search' : ''}></i>
+        <div className="box-content-search">
+          { dataSearch.length === 0 ? 
+            <div className="box-not">
+              <span>No recent searches</span>
+            </div>
+          :  
+            <>
+              { validator.isEmpty(inputs) 
+              ?
+                <>
+                {
+                  dataSearch.filter((item, index) => index < 5).map((item) => {
+                    return (
+                      <ItemListSearchPrev key={item.movie_id} item={item} />
+                    )
+                  })
+                }
+                </>
+              :
+                dataSearch.filter((item, index) => index < 6).map((item) => {
+                  return (
+                    <ItemListSearchNew key={item.movie_id} item={item} />
+                  )
+                })
+              }
+            </>
+          }
+        </div>
       </div>
       <div className="controller-user">
         { user.length === 1 ? 
@@ -95,7 +143,7 @@ export default styled(Header)`
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
-  box-shadow: 0 6px 6px rgba(0, 0, 0, 6%);
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 4%);
   background-color: #fff;
   position: fixed;
   top: 0;
@@ -168,6 +216,7 @@ export default styled(Header)`
 
   .search-box {
     position: relative;
+    border-radius: 50px;
   }
 
   .search-text {
@@ -176,6 +225,8 @@ export default styled(Header)`
     padding: .4rem .9rem;
     font-size: 1rem;
     outline: none;
+    overflow: hidden;
+    width: 300px;
   }
 
   .search-text::placeholder {
@@ -186,7 +237,6 @@ export default styled(Header)`
 
   .search-text:focus {
     border-color: rgba(48, 87, 225, 1);
-    box-shadow: 0 0 4px .5px rgba(48, 87, 225, 1);
   }
 
   .icon-search {
@@ -199,6 +249,34 @@ export default styled(Header)`
 
   .icon-search:hover {
     color: rgba(48, 87, 225, 1);
+  }
+
+  .box-content-search {
+    position: relative;
+    display: none;
+    position: absolute;
+    border: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 3px 4px 5px .2px rgba(0, 0, 0, .1);
+    background-color: #fff;
+    width: 278px;
+    height: auto;
+    border-radius: 0 0 7px 7px;
+    transform: translate(.60rem, .6rem);
+    padding: .3rem .2rem;
+  }
+
+  .search-text:focus ~ .box-content-search {
+    display: block;
+  }
+
+  .box-content-search:hover {
+    display: block;
+  }
+
+  .box-not {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .controller-user {

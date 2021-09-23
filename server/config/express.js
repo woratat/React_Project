@@ -34,6 +34,7 @@ const getComment = require('../service/router/getComment');
 const deleteComment = require('../service/router/deleteComment');
 const postCommentReply = require('../service/router/postCommentReply');
 const postAccount = require('../service/router/postAccount');
+const getSearchMovie = require('../service/router/getSearchMovie');
 
 
 module.exports = () => {
@@ -99,6 +100,7 @@ module.exports = () => {
     app.use('/api/get/comment', getComment);
     app.use('/api/delete/comment', deleteComment);
     app.use('/api/post/comment_reply', postCommentReply);
+    app.use('/api/get/search', getSearchMovie);
 
     return { listen };
 }
