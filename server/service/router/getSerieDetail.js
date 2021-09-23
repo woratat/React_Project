@@ -27,7 +27,7 @@ route.get('/:id', (req, res) => {
             message: 'Error token not fount'
         });
     } else {
-        jwt.verify(token, 'id_key_tv_show', { algorithms: ['HS512'] }, async (err, decode) => {
+        jwt.verify(token, 'id_key_tv', { algorithms: ['HS512'] }, async (err, decode) => {
             if (err) {
                 return res.status(400).json({
                     error: err,
@@ -75,6 +75,7 @@ const setToken = (data) => {
         if (Array.isArray(data)) {
             const newData = data.map((value) => {
                 return {
+                    id: value.tv_id,
                     tv_id: jwt.sign({ tv_id: value.tv_id }, 'id_key_tv', { algorithm: 'HS512' }),
                     tv_name: value.tv_name,
                     tv_image: value.tv_image,

@@ -6,13 +6,18 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import axios from "axios";
 import validator from "validator";
 import { useParams, Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchUser } from '../actions/userAction';
+import { getUser } from '../auth/user.auth';
+
 
 // component
 import Header from "../component/Header";
 import Main from "../component/MainDetail";
 import Footer from "../component/Footer";
 import ShowTrailer from "../component/ShowTrailer";
-import AddComment from "../component/AddComment";
+import AddCommentTv from "../component/AddCommentTv";
+import ShowCommentTv from "../component/ShowCommentTv";
 
 function TvDetail({ className }) {
   const [page] = useState({
@@ -43,6 +48,20 @@ function TvDetail({ className }) {
     };
     getSeries();
   }, [token]);
+
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        dispatch(fetchUser( await getUser() ));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetch();
+  }, [dispatch]);
 
   if (!validator.isJWT(token)) {
     return <Redirect to="/" />;
@@ -77,7 +96,8 @@ function TvDetail({ className }) {
             </div>
           </div>
           <div className="comment">
-            <AddComment />
+            <ShowCommentTv tv_token={token} id={series.id} />
+            <AddCommentTv tvToken={token} id={series.id} />
           </div>
         </div>
       </Main>

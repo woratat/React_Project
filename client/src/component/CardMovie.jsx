@@ -20,6 +20,7 @@ function CardMovie({ className, item }) {
       icon: 'question',
       showCancelButton: true,
       cancelButtonColor: '#f25',
+      confirmButtonColor: 'rgba(48, 87, 225, 1)',
       confirmButtonText: 'Ok'
     }).then((result) => {
       if (result.isConfirmed) {
