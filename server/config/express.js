@@ -38,7 +38,7 @@ const postCommentTv = require('../service/router/postCommentTv');
 const deleteCommentTv = require('../service/router/deleteCommentTv');
 const updateCommentTv = require('../service/router/updateCommentTv');
 const postCommentTvReply = require('../service/router/postCommentTvReply');
-
+const getSearchMovie = require('../service/router/getSearchMovie');
 
 
 
@@ -104,6 +104,7 @@ module.exports = () => {
     app.use('/api/delete/commentTv', deleteCommentTv);
     app.use('/api/update/commentTv', updateCommentTv);
     app.use('/api/post/commentTv_reply', postCommentTvReply);
+    app.use('/api/get/search', getSearchMovie);
 
     
     return { listen };

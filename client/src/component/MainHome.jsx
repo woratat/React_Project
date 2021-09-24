@@ -40,5 +40,9 @@ export default styled(MainHome)`
         flex-direction: column;
         margin-bottom: 3rem;
     }
+
+    @media screen and (max-width: 990px) {
+        margin-top: 16rem;
+    }
 `;
 

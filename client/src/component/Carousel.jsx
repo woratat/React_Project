@@ -148,6 +148,34 @@ export default styled(Carousel)`
     #carousel4:checked ~ .active-image {
         margin-left: -60%;
     }
+
+    @media screen and (max-width: 1290px) {
+        width: 1100px;
+        height: 500px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    @media screen and (max-width: 1190px) {
+        width: 900px;
+        height: 500px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    @media screen and (max-width: 990px) {
+        width: 700px;
+        height: 400px;
+        border-radius: 10px;
+        overflow: hidden;
+
+        .navigation-manual {
+            width: 700px;
+            transform: translateY(22rem);
+            display: flex;
+            justify-content: center;
+        }
+    }
 `;
 
 

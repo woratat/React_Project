@@ -32,16 +32,16 @@ function AllMovie({ className ,movieName }) {
   };
 
   return (
-    <>
+    <div className={className}>
       <h1>All movie</h1>
-      <div className={className}>
+      <div className="list-movie">
         {movies.map((movie) => {
           return (
             <CardMovie item={movie} key={movie.movie_id} />
           );
         })}
       </div>
-    </>
+    </div>
   );
 }
 
@@ -50,8 +50,51 @@ AllMovie.propTypes = {
 }
 
 export default styled(AllMovie)`
-  display: grid;
-  grid-template-columns: repeat(4, .5fr);
-  column-gap: 3rem;
-  row-gap: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .list-movie {
+    display: grid;
+    grid-template-columns: repeat(5, .5fr);
+    column-gap: 1rem;
+    row-gap: 1.5rem;
+  }
+
+  @media screen and (max-width: 1470px) {
+    .list-movie {
+      display: grid;
+      grid-template-columns: repeat(4, .5fr);
+      column-gap: 3rem;
+      row-gap: 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 1290px) {
+    .list-movie {
+      display: grid;
+      grid-template-columns: repeat(3, .5fr);
+      column-gap: 3rem;
+      row-gap: 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 1090px) {
+    .list-movie {
+      display: grid;
+      grid-template-columns: repeat(3, .5fr);
+      column-gap: 1rem;
+      row-gap: 1.5rem;
+    }
+  }
+
+  @media screen and (max-width: 890px) {
+    .list-movie {
+      display: grid;
+      grid-template-columns: repeat(2, .5fr);
+      column-gap: 3rem;
+      row-gap: 1.5rem;
+    }
+  }
 `;

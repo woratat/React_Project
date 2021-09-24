@@ -298,4 +298,10 @@ export default styled(Header)`
   .btn-link:hover {
     color: rgba(48, 87, 225, 1);
   }
+
+  @media screen and (max-width: 990px) {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+  }
 `;

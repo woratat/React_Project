@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { fetchUser } from '../actions/userAction';
 import { getUser } from '../auth/user.auth';
 import { useBody } from "../use";
+import PropTypes from 'prop-types';
+import styled from "styled-components";
 
 // component
 import Header from "../component/Header";
@@ -12,7 +14,7 @@ import ListMovie from "../component/ListMovie";
 import AllMovie from "../component/AllMovie";
 import Footer from "../component/Footer";
 
-export default function Home() {
+function Home({ className }) {
   const dispatch = useDispatch();
 
   useBody("page-home");
@@ -36,7 +38,7 @@ export default function Home() {
       </Helmet>
       <Header />
       <Main>
-        <div className="content-list">
+        <div className={className}>
           <ListMovie movieName="all" />
           <AllMovie movieName="all" />
         </div>
@@ -45,3 +47,11 @@ export default function Home() {
     </HelmetProvider>
   );
 }
+
+Home.propTypes = {
+  className: PropTypes.string.isRequired
+}
+
+export default styled(Home)`
+  
+`;
