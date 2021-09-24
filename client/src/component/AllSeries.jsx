@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import PropTypes from 'prop-types';
-import styles from "../assets/scss/row.module.scss";
 import styled from "styled-components";
 // component
 import CardSerie from "./CardSerie";

@@ -9,7 +9,6 @@ import swal from 'sweetalert2';
 import axios from "axios";
 
 function ShowComment({ className, tv_token, id }) {
-  console.log(id);
   const comments = useSelector((state) => state.comment);
   const dispatch = useDispatch();
 

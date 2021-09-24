@@ -7,7 +7,6 @@ import { useBody } from "../use";
 // component
 import Header from "../component/Header";
 import Main from "../component/MainHome";
-import ListSeries from "../component/ListSeries";
 import Footer from "../component/Footer";
 import AllSeries from "../component/AllSeries";
 
@@ -27,7 +26,6 @@ function Home({ className }) {
       <Header />
       <Main>
         <div className="content-list">
-          {/* <ListSeries movieName="all" /> */}
           <AllSeries movieName="all" />
         </div>
       </Main>
