@@ -75,9 +75,6 @@ function TvDetail({ className }) {
       <Header />
       <Main>
         <div className={className}>
-          <div className="title">
-            <h2>Series Detail</h2>
-          </div>
           <div className="content">
             <div className="content-trailer">
               <img src={series.tv_image} alt="poster" />
@@ -146,5 +143,13 @@ export default styled(TvDetail)`
     background-color: rgba(48, 87, 225, 1);
     color: white;
     padding-left: 10px;
+  }
+
+
+  @media screen and (max-width: 990px) {
+    .content {
+      display: flex;
+      flex-direction: column;
+    }
   }
 `;

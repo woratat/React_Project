@@ -63,13 +63,12 @@ export default styled(MainFavorite)`
 
     .show-content-favorite {
         display: flex;
-        justify-content: center;
     }
 
     .show-item {
         display: grid;
-        grid-template-columns: repeat(4, .5fr);
-        column-gap: 3rem;
+        grid-template-columns: repeat(5, .5fr);
+        column-gap: 1rem;
         row-gap: 1.5rem;
     }
     

@@ -144,4 +144,11 @@ export default styled(Detail)`
     color: white;
     padding-left: 10px;
   }
+
+  @media screen and (max-width: 990px) {
+    .content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 `;

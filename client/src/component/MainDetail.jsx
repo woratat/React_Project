@@ -21,5 +21,8 @@ export default styled(MainDetail)`
     margin: 0 auto;
     margin-top: 8rem;
 
+    @media screen and (max-width: 990px) {
+        margin-top: 18rem;
+    }
 `;
 
