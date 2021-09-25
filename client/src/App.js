@@ -2,6 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ScrollToTop from "./component/ScrollToTop";
 
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 // page component
 import Home from "./page/Home";
 import Login from "./page/Login";

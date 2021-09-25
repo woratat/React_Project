@@ -10,7 +10,6 @@ import styled from "styled-components";
 // component
 import Header from "../component/Header";
 import Main from "../component/MainHome";
-import ListMovie from "../component/ListMovie";
 import AllMovie from "../component/AllMovie";
 import Footer from "../component/Footer";
 
@@ -39,7 +38,6 @@ function Home({ className }) {
       <Header />
       <Main>
         <div className={className}>
-          <ListMovie movieName="all" />
           <AllMovie movieName="all" />
         </div>
       </Main>
