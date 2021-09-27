@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Helmet, HelmetProvider } from "react-helmet-async";
+import { Helmet, HelmetProvider } from "react-helmet-async";  // manage all of your changes to the document head, encapsulate data on a per-request
 import { useDispatch } from 'react-redux';
 import { fetchUser } from '../actions/userAction';
 import { getUser } from '../auth/user.auth';
@@ -15,9 +15,9 @@ import AllMovie from "../component/AllMovie";
 import Footer from "../component/Footer";
 
 function Home({ className }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch();  //ไว้บอก store ว่าเกิด action ขึ้นแล้วนะ ให้ state ทำการอัพเดทตาม type ที่กำหนดใน reducers
 
-  useBody("page-home");
+  useBody("page-home");  //เพิ่ม classname ให้ body  =>  custom hook
 
   useEffect(() => {
     const fetch = async () => {

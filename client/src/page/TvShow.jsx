@@ -13,7 +13,7 @@ import AllSeries from "../component/AllSeries";
 function Home({ className }) {
   const [page] = useState({
     title: "",
-    body: "page-home",
+    body: "page-tv-show",
   });
 
   useBody(page.body);

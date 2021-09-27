@@ -15,12 +15,13 @@ import Footer from '../component/Footer';
 export default function Favorite() {
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
+
     useBody('favorite-page');
 
     useEffect(() => {
         const fetch = async () => {
             try {
-                dispatch(fetchUser( await getUser()));
+                dispatch(fetchUser( await getUser()));  //check user
             } catch (error) {
                 console.log(error);
             }

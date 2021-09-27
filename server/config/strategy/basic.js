@@ -1,6 +1,6 @@
 const passport = require('passport');
 const BasicStrategy = require('passport-http').BasicStrategy;
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt'); //check encrypted password
 const connect = require('../database');
 
 
@@ -8,7 +8,7 @@ module.exports = () => {
     passport.use(new BasicStrategy(async (username, password, done) => {
         try {
             const sql_check = "SELECT password FROM account WHERE username = ?";
-            const [check] = await connect.execute(connect.format(sql_check, [username]));
+            const [check] = await connect.execute(connect.format(sql_check, [username])); //insert username to ?
 
             if (check.length === 0 || check.length >= 2) {
                 return done(null, {

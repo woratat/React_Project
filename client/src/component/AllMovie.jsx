@@ -10,6 +10,7 @@ import CardMovie from "./CardMovie";
 
 function AllMovie({ className ,movieName }) {
   const [movies, setMovies] = useState([]);
+  
   useEffect(() => {
     getMovieList(movieName);
   }, [movieName]);

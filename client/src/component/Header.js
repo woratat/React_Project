@@ -35,7 +35,7 @@ function Header({ className }) {
         });
 
         if (res.status === 200) {
-          if (res.data.message) {
+          if (res.data.message) {  //*******
             setDataSearch([]);
           } else {
             setDataSearch(res.data);
@@ -50,7 +50,7 @@ function Header({ className }) {
   }, [inputs]);
 
   const handleLogout = (e) => {
-    e.preventDefault();
+    e.preventDefault();  //prevent refresh
     swal.fire({
       title: 'Sign out',
       text: 'Do you want sign out?',
@@ -84,9 +84,9 @@ function Header({ className }) {
         <input type="text" placeholder="Search" className="search-text" onChange={handleChange} value={inputs}></input>
         <i className={inputs.length < 10 ? 'bx bx-search icon-search' : ''}></i>
         <div className="box-content-search">
-          { dataSearch.length === 0 ? 
+          { dataSearch.length === 0 ?   //ternary
             <div className="box-not">
-              <span>No recent searches</span>
+              <span>No movie matched</span>
             </div>
           :  
             <>
@@ -96,15 +96,15 @@ function Header({ className }) {
                 {
                   dataSearch.filter((item, index) => index < 5).map((item) => {
                     return (
-                      <ItemListSearchPrev key={item.movie_id} item={item} />
+                      <ItemListSearchPrev key={item.movie_id} item={item} />  //อันเก่า
                     )
                   })
                 }
                 </>
               :
-                dataSearch.filter((item, index) => index < 6).map((item) => {
+                dataSearch.filter((item, index) => index < 5).map((item) => {
                   return (
-                    <ItemListSearchNew key={item.movie_id} item={item} />
+                    <ItemListSearchNew key={item.movie_id} item={item} />  //อันใหม่
                   )
                 })
               }

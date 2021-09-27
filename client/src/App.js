@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"; //เพื่อให้เปลี่ยนหน้าได้โดยไม่รีเฟรช
 import ScrollToTop from "./component/ScrollToTop";
 
 // page component

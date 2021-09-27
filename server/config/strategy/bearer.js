@@ -6,7 +6,7 @@ const connect = require('../database');
 module.exports = () => {
     passport.use(new BearerStrategy({ passReqToCallback: true } ,(req, token, done) => {
         try {
-            jwt.verify(token, 'id_key_account', { algorithms: ['HS512'] }, async (err, decode) => {
+            jwt.verify(token, 'id_key_account', { algorithms: ['HS512'] }, async (err, decode) => {  //(key, password token, algorithm, callback()) convert token to object
                 if (err) {
                     done(err);
                 } else {
@@ -17,7 +17,7 @@ module.exports = () => {
 
                     if (result) {
                         if (result[0].count === 0) {
-                            done(null, false, req.flash('message', 'User not fount'));
+                            done(null, false, req.flash('message', 'User not found')); //done(error, user, info)
                         } else {
                             done(null, {
                                 id,

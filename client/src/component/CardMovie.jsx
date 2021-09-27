@@ -26,7 +26,7 @@ function CardMovie({ className, item }) {
       if (result.isConfirmed) {
         const post = async () => {
           try {
-            const res = await axios.post(`http://localhost:5050/api/post/favorite/${user[0].user}`, { token_movie: id });
+            const res = await axios.post(`http://localhost:5050/api/post/favorite/${user[0].user}`, { token_movie: id }); // url data config (POST/PUT)
   
             if (res.status === 200) {
               const toast = await Swal.mixin({

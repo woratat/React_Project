@@ -19,7 +19,7 @@ route.get('/', passport.authenticate('basic', { session: false }), (req, res) =>
         });
     } else {
         const { id, username } = req.user;
-        const token = jwt.sign({ id, username }, 'id_key_account', { algorithm: 'HS512' });
+        const token = jwt.sign({ id, username }, 'id_key_account', { algorithm: 'HS512' }); //change to token
 
         return res.status(200).json({
             message: 'login successfully',

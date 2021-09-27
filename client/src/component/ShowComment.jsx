@@ -37,8 +37,8 @@ function ShowComment({ className, movie_token, id }) {
   useEffect(() => {
     const socket = socketIOClient(`http://localhost:5050`); 
     const response = () => {
-      socket.emit("room", id);
-      socket.on("message", (newMessage) => {
+      socket.emit("room", id); //สร้าง event room
+      socket.on("message", (newMessage) => {  //รับ event
         dispatch(
           addComment({
             comment_id: newMessage.comment_id,
@@ -202,7 +202,7 @@ function ShowComment({ className, movie_token, id }) {
       ) : (
         <div className="show-comment">
           {comments.map((value, index) => {
-            if (value.comment_reply === 0) {
+            if (value.comment_reply === 0) {  //ถ้า comment_reply เป็น 0 ให้ แสดงปกติ
               return (
                 <div key={value.comment_id} className="content-show-data">
                   <div>
@@ -261,7 +261,7 @@ function ShowComment({ className, movie_token, id }) {
                       <span>{value.message}</span>
                     </div>
                     {comments.map((item, index_item) => {
-                      if (value.comment_id === item.comment_reply) {
+                      if (value.comment_id === item.comment_reply) { //show comment reply
                         return (
                           <div key={item.comment_id} className="content-user-reply">
                             <div className="content-user">
